@@ -1,0 +1,327 @@
+\documentclass[]{article}
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage{systeme,}
+\usepackage{lipsum}
+\usepackage{relsize}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\usepackage{harpoon}%
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{authblk}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{chngcntr}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage{commath}
+\usepackage{hyperref}%Might remove, adds link to each reference
+\usepackage{url}
+\newcommand{\w}{\omega}
+\newcommand{\curl}[1]{\vec{\nabla}\times \vec{#1}}
+\newcommand{\grad}{\vec{\nabla}}
+\newcommand{\dive}[1]{\vec{\nabla}\cdot \vec{#1}}
+%\newcommand{\crr}{\mathfrak{r}}
+\usepackage{calligra}
+% \pgfplotsset{compact=1.18}
+
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\crr}{\mathcalligra{r}\,}
+\newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
+
+\title{Fk 7048, Handin 2}
+\author{Author : Andreas Evensen}
+\date{Date: \today}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+\maketitle
+
+\section*{Task 1}
+
+\subsection*{a)}
+\begin{align*}
+    y'' - y' = \frac{x}{e^x}
+\end{align*}
+Firstly we solve the homogeneous equation using the characteristic equation
+\begin{align*}
+    &e^{rx}(r^2 - 1) = 0\\
+    &y_h = c_1e^x + c_2e^{-x}
+\end{align*}
+Now we use the method of variation of parameters to find the particular solution
+\begin{align*}
+    y_p &= A_1(x)y_1(x) + A_2(x)y_2(x),\\
+    W(y_1, y_2) &=
+    \begin{vmatrix}
+        e^x & e^{-x}\\
+        e^x & -e^{-x}
+    \end{vmatrix} = -2,\\
+    A_1(x) &= -\int \frac{1}{-2}e^{-x}\frac{x}{e^x}dx=\frac{1}{2}\int e^{-2x}xdx\\
+    &= \frac{1}{2}\Bigg[\Big(\frac{e^{-2x}}{-2}x\Big) - \frac{1}{2}\int e^{-2x}dx\Bigg] = \frac{-e^{2x}}{4}\Big(x+\frac{1}{2}\Big),\\
+    A_2(x) &= \int \frac{1}{-2}e^{x}\frac{x}{e^{x}}dx =-\frac{x^2}{4},\\
+    \implies y = y_h + y_p &= c_1e^x + c_2e^{-x} -\frac{e^{2x}}{4}\Big(x+\frac{1}{2}\Big)e^x -\frac{x^2}{4}e^{-x}\\
+    &= e^x\Big(c_1 - \frac{e^{2x}}{4}\big[x+\frac{1}{2}\big]\Big) + e^{-x}\Big(c_2 - \frac{x^2}{4}\Big).
+\end{align*}
+
+\subsection*{b)}
+Solving the homogeneous equation:
+\begin{align*}
+    y'' + \lambda y = 0;\quad y(0) = y'(\pi) = 0.
+\end{align*}
+Making the ansatz $y = e^{rx}$ yields the following characteristic equation:
+\begin{align*}
+    e^{rx}(r^2 + \lambda) = 0,\\
+    r = \pm \sqrt{-\lambda}.
+\end{align*}
+This then divides into three cases: $\lambda> 0$, $\lambda = 0$ and $\lambda < 0$.\\ In the case of $\lambda <0$ we get real solutions, and the general solution becomes:
+\begin{align*}
+    y = c_1 e^{\sqrt{-\lambda}x} + c_2 e^{-\sqrt{-\lambda}x}.
+\end{align*} Using the boundary conditions we get that $c_1 = -c_2$ and $c_1\sqrt{-\lambda} = c_2\sqrt{-\lambda}$. This implies that $c_1 = c_2 = 0$, which is then a trivial solution.
+For the case $\lambda = 0$ we only get one solution $y = c_1$ which is also a trivial solution.
+For the case $\lambda > 0$ we get a complex exponential on the following form, where $\sqrt{-\lambda} = i \theta$:
+\begin{align*}
+    y &= c_1 e^{i\theta x} + c_2 e^{-i\theta x}\\
+    &= \underbrace{(c_1 + c_2)}_{a}\cos(\theta x) + i\underbrace{(c_1 - c_2)}_{b}\sin(\theta x).
+\end{align*} Given the boundary conditions we know that the solution has to be real, thus we "cast" away the imaginary part by simply saying that we add the real and imaginary part. This gives us the following solution: 
+\begin{align*}    
+    y'(x) &= -a \sin(\theta x) + b \cos(\theta x) = 0,\\
+    y(0) &= a + 0 = 0 \implies a = 0,\\
+    y'(\pi) &=b\cos(\theta\cdot\pi) = 0 \implies \cos(\theta\cdot\pi) = 0.
+\end{align*}This is only true if $\theta$ is any multiple of $\frac{1}{2}$. However, we need to add a degree of freedom since this periodicity is always true. Thus we get the following solution::
+\begin{align}
+    y_n(x) = b\sin\Bigg(\frac{2n - 1}{2}\cdot x\Bigg).
+\end{align}Here $n\in\mathcal{Z}^*$, since we want to obtain any multiple of $\frac{1}{2}$.
+
+\section*{Task 2}
+A second order homogeneous ODE can be written on the following form:
+\begin{align*}
+    y'' + p(x)y' + q(x)y = 0.
+\end{align*} saying that $y = u(x)y_1(x)$ is a solution is true if $y_1(x)$ is a solution in itself given Abel's theorem. (\textit{Note}: $u(x)$ is a polynomial function).
+Using the following we get:
+\begin{align*}
+    y &= y_1(x)u(x),\\
+    y' &= y_1'(x)u(x) + y_1(x)u'(x),\\
+    y'' &= y_1''(x)u(x) + 2y_1'(x)u'(x) + y_1(x)u''(x).
+\end{align*} Plugging this into the homogeneous ODE, and rearranging, gives us:
+\begin{align*}
+    y_1''(x)u(x) + 2y_1'(x)u'(x) &+ y_1(x)u''(x) + p(x)\Big(y_1'(x)u(x) + y_1(x)u'(x)\Big) + q(x)y_1(x)u(x) = 0,\\
+    u''(x)y_1(x) + u'(x)\Big(&2y_1'(x) + p(x)y_1(x)\Big) + u(x)\underbrace{\Big(y_1''(x)+p(x)y_1'(x) + q(x)y_1(x)\Big)}_{ = 0} = 0,\\
+    &u''(x)y_1(x) + u'(x)\Big(2y_1'(x)+ p(x)y_1(x)\Big) = 0.
+\end{align*}Dividing everything by $y_1(x)$ gives us the following:
+\begin{align*}
+    u''(x) + u'(x)\Big(\frac{2y_1'(x)}{y_1(x)} + p(x)\Big) = 0.
+\end{align*}This equation is in the first order if $v(x) = u'(x)$, which gives us the following:
+\begin{align*}
+    v'(x) + v(x)\Big(\frac{2y_1'(x)}{y_1(x)} + p(x)\Big) = 0.
+\end{align*}Using the integrating factor $\alpha(x) = \exp\Big[\int\big(2\frac{y_1'(x)}{y_1(x)} + p(x)\big)dx\Big]$ and evaluating gives:
+\begin{align*}
+   \alpha(x) &= \exp\Bigg[\int\big(2\frac{y_1'(x)}{y_1(x)} + p(x)\big)dx\Bigg]\\
+   &= \exp\Bigg[2\int\frac{y_1'(x)}{y_1(x)}dx + \int p(x)dx\Bigg]\\
+   &= \exp\Bigg[2\Big(\Big[\frac{y_1(x)}{y_1(x)}\Big] - \int y_1(x)\cdot\frac{d}{dx}\Big(\frac{1}{y_1(x)}\Big)dx\Big) + \int p(x)dx\Bigg]= \exp\Bigg[\int p(x)dx\Bigg]y_1^2(x).
+\end{align*}Applying this integrating factor yields:
+\begin{align*}
+    &v'(x)\cdot\alpha(x) + v(x)\Big(\frac{2y_1'(x)}{y_1(x)} + p(x)\Big)\alpha(x) = 0\\
+    &=v'(x)\cdot\alpha(x) + v(x)\cdot\alpha'(x).\\
+    &\frac{d}{dx}\Big(v(x)\cdot\alpha(x)\Big)=0.\\
+    &v(x)\cdot\alpha(x) = K.\\
+    &v(x) = \frac{K}{\alpha(x)} = K \cdot \frac{\exp\Bigg[-\int p(x)dx\Bigg]}{y_1^2(x)}.\\
+    &u(x) = \int v(x)= K\int \frac{\exp\Big[-\int p(x)dx\Big]}{y_1^2(x)}.\\
+    u(x)=\frac{y(x)}{y_1(x)}\implies& y(x) = Ky_1(x)\cdot\int \frac{\exp\Big[-\int p(x)dx\Big]}{y_1^2(x)}dx.
+\end{align*}
+
+\section*{Task 3}
+\subsection*{a)}
+We show that this ODE is scale invariant, i.e that $x\to ax$ maps to $y\to a^{p}y$; $p = -1$.
+\begin{align*}
+    xy'' + (2-xy)y' = y^2.
+\end{align*}
+The ODE is invarient under $p =-1$, $y = u(x)\cdot x^{-1}$, which is shown by the following:
+\begin{align*}
+    y(x) &= x^p u(x),\\
+    y'(x) &= px^{p-1}u(x) + x^p u'(x),\\ 
+    y'' (x) &= p(p-1)x^{p-2}u(x) + 2px^{p-1}u'(x) + x^p u''(x).
+\end{align*}Plugging this into the ODE gives us the following:
+\begin{align*}
+    &x\cdot\Big(p(p-1)x^{p-2}u(x) + 2px^{p-1}u'(x) + x^p u''(x)\Big)\\
+    &+ \Big(2 - x\cdot x^p u(x)\Big)\cdot\Big(px^{p-1}u(x) + x^p u'(x)\Big) = \Big(x^pu(x)\Big)^2.\\
+\end{align*}This equation is only valid is $p = -1$. Using this newfound information, we compute the derivatives to $y(x)$ accordingly:
+\begin{align*}
+    y' &= u'x^{-1} - u x^{-2},\\
+    y'' &= u''x^{-1} - 2u'x^{-2} + 2u x^{-3}.
+\end{align*}Plugging this into the ODE gives us the following:
+\begin{align*}
+    u^2 x^{-2}&= x\cdot\Big(u''x^{-1} - 2u'x^{-2} + 2u x^{-3}\Big)\\
+    &+ (2-\underbrace{xux^{-1}}_{=u})\cdot\Big(u'x^{-1} - ux^{-2}\Big)\\
+    &= u'' - 2u'x^{-1} + 2ux^{-2} + 2 u'x^{-1} - 2ux^{-2} -uu'x^{-1} + u^2x^{-2},\\
+    0&=u'' - 2u'x^{-1} + 2ux^{-2} + 2u'x^{-1} -2u x^{-2} - u u' x^{-1}\\
+    &= u'' -uu'x^{-1},\\
+    \implies& 0= x^2u'' - xu' u.
+\end{align*} Using the following:
+\begin{align*}
+    x &= e^t\quad t = \ln(x)\\
+    x \frac{d}{dx} &= x \frac{dt}{dx}\frac{d}{dt} = x \frac{1}{x}\frac{d}{dt} = \frac{d}{dt}\\
+    x^2 \frac{d^2}{dx^2} = x^2\frac{d}{dx}\Big(\frac{dx}{dt}\frac{d}{dt}\Big)&= x^2\frac{d}{dx}\Big(\frac{1}{x}\frac{d}{dt}\Big) = -\frac{d}{dt} + \frac{d^2}{dt^2}
+\end{align*}We obtain the the following:
+\begin{align*}
+    0&=\Big(\frac{d^2}{dt^t} - \frac{d}{dt}\Big) u - u\frac{d}{dt}\big(u\big)\\
+    u\frac{d}{dt}u&=\Big(\frac{d^2}{dt^2} - \frac{d}{dt}\Big)u
+\end{align*}Letting $w(u) = u'(t)$ gives us:
+\begin{align}
+    u(t) w(u) &= \frac{d^2}{dt^2}u - \frac{d}{dt}u=\frac{d}{dt}w(u) - w(u),\nonumber\\
+    u(t)\cdot w(u)&= w'(u)w(u) - w(u).\label{task 3a solution}
+\end{align}
+
+\subsection*{b)}
+Dividing by $w(u)$ on both sides of equation \eqref{task 3a solution} gives us the following:
+\begin{align*}
+   u(t) &= w'(u) - 1 \implies w'(u)  = 1 +u(t)
+\end{align*} Integrating this in terms of $u$ yields:
+\begin{align*}
+    w(u) &= \frac{u^2(t)}{2} + u(t) + C_1,\\
+    \implies \frac{du}{dt} &= \frac{u^2(t)}{2} + u(t) + C_1,\\
+    \implies& \frac{du}{\frac{u^2(t)}{2} + u(t) + C_1} = dt\\
+    \implies \int& \frac{du}{\frac{u^2(t)}{2} + u(t) + C_1} = \int dt = t + C_2\\
+\end{align*} Substituting $u(t) = x$ and $t = $ gives us the following:
+\begin{align*}
+    2\int \frac{du}{u^2 + 2u + 2C_1} &= 2 \int \frac{du}{(u+1)^ + 2C_1 - 1}\\
+    &=\lceil z = \frac{u+1}{\sqrt{2C_1 -1}}\rfloor\\
+    &=2\int \frac{\sqrt{2C_1 - 1}}{\sqrt{2C_1 - 1}z^2 + 2C_1 + 1}dz\\
+    &=\frac{2}{\sqrt{2C_1 - 1}}\int\frac{1}{z^2 + 1}dz,\\
+    t + C_2&= \frac{2}{\sqrt{2C_1 - 1}}\arctan\Big(\frac{u+1}{\sqrt{2C_1 - 1}}\Big)
+\end{align*}Substituting $\sqrt{2C_1 - 1} = c_1$ gives:
+\begin{align*}
+    t + C_2 &= \frac{2}{c_1}\arctan\Big(\frac{u+1}{c_1}\Big),\\
+    \frac{c_1}{2}t + \frac{c_1C_2}{2} + 1 &= \arctan\Big(\frac{u+1}{c_1}\Big)\\
+    \tan\Big(\frac{c_1}{2}t + \frac{c_1C_2}{2} + 1\Big) &= \frac{u+1}{c_1},\\
+    \implies u(t) &= c_1\tan\Big(\frac{c_1}{2}t + \frac{c_1C_2}{2} + 1\Big) - 1\\
+    u(t) = x \cdot y(x)\implies y(x) &=\frac{c_1}{x}\tan\Big(\frac{c_1}{2}t + \underbrace{\frac{c_1C_2}{2} + 1}_{=c_2}\Big) - \frac{1}{x},\\
+    \implies y(x) &= \frac{c_1}{x}\tan\Big(\frac{c_1}{2}\ln(x) + c_2\Big) - \frac{1}{x}.
+\end{align*}
+
+\subsection*{c)} There always exits a trivial solution of $y(x) = 0$. Since this solution does not change the equation, nor solution, this is non-sequential solution. If another solution would exist, one can find such a solution using Abels' theorem.
+\begin{equation}
+    y_2(x) = k y_1(x) \int dx\Bigg( \frac{\exp\Big[-\int p(x)dx\Big]}{y_1^2(x)}\Bigg)
+\end{equation}
+However, since the solution already has two degrees of freedom, one can not find another solution using Abels' theorem. Thus, the solution is 'unique'.
+
+\section*{Task 4}
+\begin{align*}
+    y''(x) +2xy'(x) + (2x+1)y(x) = 0.
+\end{align*}
+\subsection*{a)}
+Applying the transformation $y(x) = e^{u(x)}$ yields:
+\begin{align*}
+    y'(x) &= e^{u(x)}\cdot u'(x),\\
+    y''(x)&=e^{u(x)}\cdot \big( u'(x)\big)^2 + e^{u(x)}\cdot u''(x).
+\end{align*}Applying this to the ODE gives the following:
+\begin{align*}
+    &e^{u(x)}\cdot\Bigg[ \big( u'(x)\big)^2 +  u''(x) + 2x\cdot u'(x) + (2x+1)\Bigg] = 0,\\
+    &u''(x) + \Big(u'(x)\Big)^2+ 2xu'(x) = -(2x + 1),\\
+    &v'(x) + \Big(v(x)\Big)^2 + 2xv(x) = -(2x + 1).
+\end{align*}
+
+\subsection*{b)}
+Looking for a particular solution on the form $v_0(x) = ax + b$ yields the following:
+\begin{align*}
+    &a + (ax + b)^2 + 2x(ax + b) = -(2x + 1),\\
+    &(a + b^2) + x\big(2ab + 2b\big) + x^2\big(a^2 + 2a\Big) = -(2x + 1),\\
+    \implies & x^2(a^2 + 2a) = 0\quad \& \quad x(2ab + 2b) = -2x\quad \& \quad a + b^2 = - 1\\
+    &\implies  v_0(x) = -2x +1
+\end{align*}
+
+\subsection*{c)}
+Using $v(x) = v_0(x) + w(x)$ and plugging this into our Riccati equation gives us the following:
+\begin{align}
+    &w'(x) + v_0'(x) + \big(w(x) + v_0(x)\big)^2 + 2x\big(w(x) + v_0(x)\big) = -(2x+1)\nonumber\\
+    &w'(x) + v_0'(x) + w^2(x) + 2w(x)v_0(x) + v_0^2(x) + 2xw(x) + 2xv_0(x) = -(2x+1)\nonumber\\
+    &w'(x) + w^2(x) + 2w(x)v_0(x) + 2xw(x) + \underbrace{\Big[v_0'(x) + v_0^2(x) + 2xv_0(x)\Big]}_{\text{A known solution}} = -(2x + 1)\nonumber\\
+    &w'(x) + \Big(w^2(x) + 2w(x)v_0(x)\Big) + 2xw(x) = 0,\label{task4}\\
+    &w'(x) + \Big(w^2(x) + 2w(x)(-2x + 1)\Big) + 2xw(x) = 0\label{sol task 4c}\\
+    &w'(x) + w^2(x) - 2xw(x) + 2w(x) = 0\nonumber\\
+    &w'(x) + w^2(x) + (2 - 2x)w(x) = 0.\nonumber
+\end{align}Equation \eqref{task4} is a first order non-homogeneous ODE on Riccati form.
+\subsection*{d)}
+Rewriting the above equation gives:
+\begin{align*}
+    w'(x) &= -w^2(x)+ w(x)\big(2x - 2\big)\\
+    w'(x) &= q(x)w^2(x) + p(x)w(x)\\
+    \implies u'(x) &= \tilde{q}(x)u(x) + \tilde{p}(x); \quad u(x) = w(x)^{-1}
+\end{align*}Solving with integrating factor gives us the following, with $\tilde{q}(x) = 1$ and $\tilde{p}(x) = (2-2x)$:
+\begin{align*}
+    \alpha(x) &= \exp\Big[\int \tilde{p}(x)dx\Big] = \exp\Big[2x - x^2\Big],\\
+    \implies u(x) &= \frac{1}{\alpha(x)}\int \alpha(x)\tilde{q}(x)dx = \frac{1}{\alpha(x)}\underbrace{\int \alpha(x)dx}_{=I}.\\
+    I &= \int_0^x \exp\Big[2\tilde{x} - \tilde{x}^2]d\tilde{x} = \lceil \tilde{u} = \tilde{x}-1\rfloor\\
+    &= \int_0^{u+1} \exp\Big[-\tilde{u}^2\Big]\exp\Big[-1\Big]d\tilde{u}\\
+    \implies u(x) &= \frac{\sqrt{\pi}}{2\exp\Big[1 + (2x - x^2)\Big]}\cdot \text{erf}\big[x -1\big].
+\end{align*}\textit{Note:} The error-function given in the exercise sheet is not on correct form, but rather is the complex error-function. Above is the 'real' error-function defined. Moreover, this is the solution for $u(x)$ and not $y(x)$, In order to revert to $y(x)$ one has to remeber all the substituions made and traverse the equality between the substituions; this however, is trivial.
+
+\section*{Task 5}
+We have the following equation system:
+\begin{align}
+    \frac{d N_a}{dt} &= -\lambda_{a}N_a,\label{task5; 1}\\
+    \frac{d N_b}{dt} &= -\lambda_{b}N_b + \lambda_{a}N_a\label{task5; 2}.
+\end{align}
+Solving \eqref{task5; 1} gives us the following solution for $N_a(t)$:
+\begin{align*}
+    N_a(t) = N_a^{(0)}e^{-\lambda_a t}.
+\end{align*}
+Using this we can now adapt the method of variation of constants to solve the equation system.
+We thus now have a problem on the following form:
+\begin{align*}
+    &\frac{d N_b}{dt} = -\lambda_b N_b + \underbrace{\lambda_a N_a^{(0)}e^{-\lambda_a t}}_{=f(t)},\\
+    &\frac{d N_b}{dt} + \lambda_b N_b = f(t).
+\end{align*} Solving the homogenous part of $N_b$ gives:
+\begin{align*}
+    N_b(t) &= N_b^{(0)}e^{-\lambda_b t}.
+\end{align*} Applying the variation of constants method gives us the following, $N(t) = C(t)N_b(t)$:
+\begin{align*}
+    C'(t)N_b(t) + C(t)N_b'(t) + \lambda_b C(t)N_b(t) &= f(t),\\
+    C'(t)N_b(t) + C(T)\underbrace{(N_b' + \lambda_bN_b(t))}_{=0} &= f(t),\\
+    C'(t)N_b(t) = f(t) &= \lambda_a sN_a^{(0)}e^{-\lambda_at}.
+\end{align*}Integrating both sides with respect to time gives us the following:
+\begin{align*}
+    C(t) &= \int_0^t\frac{\lambda_aN_a^{0}e^{-\lambda_a\tilde{t}}}{N_b^{0}e^{-\lambda_b\tilde{t}}}d\tilde{t}\\
+    &= \frac{N_a^{(0)}}{N_b^{(0)}}\cdot\frac{\lambda_ae^{t(\lambda_b - \lambda_a)}}{\lambda_b - \lambda_a}.
+\end{align*}Solving for $N(t)$, which is the final solution, gives us the following:
+\begin{align*}
+    \implies N(t) &= \frac{N_a^{(0)}}{N_b^{(0)}}\cdot\frac{\lambda_ae^{t(\lambda_b - \lambda_a)}}{\lambda_b - \lambda_a} \cdot N_b^{(0)}e^{-\lambda_b t}\\
+    &= N_a^{(0)}\cdot \frac{\lambda_ae^{-t(\lambda_a)}}{\lambda_b - \lambda_a}.
+\end{align*}
+
+\end{document}

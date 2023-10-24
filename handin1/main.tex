@@ -1,0 +1,275 @@
+\documentclass{article}
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{mdframed}
+\usepackage{systeme,}
+\usepackage{lipsum}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\usepackage{harpoon}%
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{a4wide}
+\usepackage{comment}
+\usepackage{authblk}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{chngcntr}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage{commath}
+\usepackage{hyperref}%Might remove, adds link to each reference
+\usepackage{url}
+\newcommand{\w}{\omega}
+\newcommand{\curl}[1]{\vec{\nabla}\times \vec{#1}}
+\newcommand{\grad}{\vec{\nabla}}
+\newcommand{\dive}[1]{\vec{\nabla}\cdot \vec{#1}}
+%\newcommand{\crr}{\mathfrak{r}}
+\usepackage{calligra}
+
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\crr}{\mathcalligra{r}\,}
+\newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
+
+\title{Handin 1, FK7048}
+\author{Author : Andreas Evensen}
+\date{Date: \today}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+\maketitle
+
+\section*{Task 1}
+\subsection*{a)}
+Determine the type of the following ODE and solve it:
+\begin{align*}
+    (2x-3y)dx + (2y - 3x)dy = 0.
+\end{align*}
+Firstly, the type of the ODE is that of homogenous equation; we solve by doing the following substitution: $y=vx$ which leads to the following expression:
+\begin{align*}
+    (2xv - 3x)(xdv + dx v) + (2x - 3xv)dx &= 0\\
+    \frac{(2x^2 v - 3x^2)}{x}dv + \frac{(2xv^2 - 3xv - 2x - 3xv)}{x}dx&=0\\
+    - \Big(\frac{2v - 3}{2v^2 - 6v + 2}\Big)dv &= \Big(\frac{1}{x}\Big)dx\\
+    \implies-\int dv\Big(\frac{2v-3}{2v^2-6v+2}\Big)&=\int dx\Big(\frac{1}{x}\Big)\\
+    -\underbrace{\int dv\Big(\frac{2v-3}{2v^2-6v+2}\Big)}_{u = 2v^2 - 6v + 2;\quad du = (4v - 6) dv}=-\frac{\ln(\abs{2v^2 - 3v + 1})}{2} + c_2&= \ln(x) + c_1
+\end{align*}
+
+\begin{align*}
+    -\frac{\ln\Bigg(\abs{2\Big(\frac{y}{x}\Big)^2 - 3\frac{y}{x} + 1}\Bigg)}{2} + c_2&= \ln(x) + c_1    
+\end{align*}
+This is an implicit solution. \textit{Note: This is also an exact ODE.}
+
+\subsection*{b)}
+Determine the type of the following ODE and solve it:
+\begin{align*}
+    \frac{dy}{dx} = \cos^2(x)\sin(x)\sec(y).
+\end{align*}
+We begin by rewriting the equation:
+\begin{align*}
+    \frac{dy}{dx} = \frac{\cos^2(x)\sin(x)}{\cos(y)},
+\end{align*}Now it's clear that the equation is of type 'seperable' equation.
+\begin{align*}
+    \cos(y)dy &=\cos^2(x)\sin(x)dx\\
+    \int_{0}^{y}\cos(y')dy' &=\int_{0}^{x}\cos^2(x')\sin(x')dx'\\
+    \sin(y) + c_1 = \lfloor u = \cos(x); du = -\sin(x)dx \rceil&=-\int u^2 du = -\frac{u^3}{3} + c_2
+\end{align*}
+The solution becomes the trivial $y = \arcsin\Big(c-\frac{\cos^3(x)}{3}\Big)$
+
+\section*{Task 2}
+\subsection*{a)}
+The ODE that we seek to solve is the following:
+\begin{align*}
+    - \Vec{\nabla}P + \rho(P)\Vec{g} = \mathbf{0}.
+\end{align*} Given that the system under investigation is that of the Earth's atmosphere we can make the assumption that the pressure $P$ is only a function of height and thus treating this with only one parameter, namely $z$; the ODE then becomes:
+\begin{align}
+    - \frac{d}{dz}(P_z) &+ g\cdot\rho(P_z) = 0,\nonumber\\
+    \rho(P_z)&=\frac{1}{g}\frac{d P_z}{dz}. \label{exp: 1}\\
+    g\int_{0}^z\rho(P)dz' &= \int_{P_0}^{P}dP'.\nonumber
+\end{align}
+\subsection*{b)}
+The ideal gas law states as follows:
+\begin{align}
+    PV &= Nk_bT\nonumber, \\
+    \implies P\frac{m}{\rho} &= Nk_bT\nonumber,\\
+    \implies\rho(P) &= \frac{Pm}{Nk_bT} = P \cdot \alpha\label{exp: 2}
+\end{align}where $\alpha = \frac{m}{Nk_bT}$.
+\subsection*{c)} Using the result from \eqref{exp: 1} into \eqref{exp: 2}  and rearranging yields the following:
+\begin{align*}
+    \int_{P_0}^P dP' \Big(\frac{1}{P'}\Big) &= \int_0^z dz'\Big(g\cdot\alpha\Big),\\
+    \ln\Big(\frac{P}{P_0}\Big)&=g\alpha\cdot z,\\
+    P(z) &= P_0\exp\Big[g\alpha\cdot z\Big]
+\end{align*}The expression $g\cdot \alpha$ simply then becomes $-\frac{1}{h}$ which gives the final expression:
+\begin{align*}
+    P(z) = P_0\cdot e^{\frac{-z}{h}}.
+\end{align*}To show this, we look at the following,
+\begin{align*}
+    g\cdot \alpha &= \frac{gm}{Nk_bT}\\
+    &=\Big[\frac{\frac{\text{m}}{\text{s}^2}\cdot\text{kg}}{\text{J}\cdot\text{K}^{-1}\cdot\text{K}}\Big]\\
+    &=\Big[\frac{\text{m}}{\text{s}^2}\cdot\frac{\text{kg}}{\text{J}}\Big]\\
+    &=\Big[\frac{\text{m}}{\text{s}^2}\cdot\frac{\text{kg}}{\text{kg}\cdot\text{m}^2\text{s}^{-2}}\Big]\\
+    &=\Big[\text{m}^{-1}\Big]
+\end{align*}Hence, the unit-test checks out.
+\subsection*{d)}
+Rewriting \eqref{exp: 1} yields the following expression for $-h^{-1}$:
+\begin{align*}
+    -h^{-1} = g\cdot\frac{M}{RT}
+\end{align*}such that $R$ is the ideal gas constant and $T$ is the base temperature. Doing this computation gives the value $h^{-1} = 0.00012524$, which is fairly plausable. This means that as one approaches the limit $\lim_{z\to \infty}\exp[-\frac{z}{h}] = 0$.
+\subsection*{e)}
+If the temperature is difference is non-negliable, we get the following ODE:
+\begin{align*}
+    \int_{P_0}^P dP' \Big(\frac{1}{P'}\Big) &= \int_0^z dz'\Big(g\cdot\frac{m}{Nk_bT(z)}\Big)\\
+    &=\frac{g}{Nk_b}\int_0^zdz'\Big(\frac{1}{T_0 - \beta z}\Big)\\
+    \ln\Big(\frac{P}{P_0}\Big)&=\frac{g}{Nk_b(-\beta)}\ln\Big(\frac{T_0 - \beta z}{T_0}\Big)\\
+    P(z)&=P_0\exp\Big[\frac{g}{Nk_b(-\beta)}\Big]\cdot\Big(\frac{T_0 - \beta z}{T_0}\Big)
+\end{align*}
+
+
+\section*{Task 3: Parallel RLC Circuit}
+\subsection*{a)}
+We can show this by Kirchhoff's laws.
+The totalt voltage $V$ is given by the following:
+\begin{align*}
+    E\cos(\omega t) = R \cdot I + U 
+\end{align*}where $R$ is the resistance and $I$ is the total current over the circuit. $I$ can be decomposed over as $I = I_1 + I_2$ where $I_1$ is the current over the conductor and $I_2$ is the current over the inductor.
+\begin{align*}
+    E\cos(\omega t) &= R\cdot(I_1 + I_2) + U\\
+    &=R\cdot I_1 + R\cdot I_2 + U\\
+    &= R\cdot I_1 + \Big(-L\frac{dI}{dt}\Big)
+\end{align*}
+
+\subsection*{b)}
+\begin{align*}
+    \ddot{u}(t) + \frac{1}{RC}\dot{u}(t) + \frac{1}{LC}u(t) = \frac{1}{RC}\dot{e}(t)
+\end{align*}
+In order to first start to solve this second order non-homogenous differential-equation we'll solve the charactheristic polynomial, providing the ansats $u(t)= \exp(rt)$:
+\begin{align*}
+    \exp(rt)\Big[r^2 + \alpha r + \beta \Big]=0
+\end{align*}such that $\alpha = \frac{1}{RC}$ and $\beta = \frac{1}{LC}$. Solving for $r_i$ gives the following:
+\begin{align*}
+    r_1 &= -\frac{\alpha}{2} + \sqrt{\frac{\alpha^2}{^2}-\beta},\\
+r_2&= -\frac{\alpha}{2} - \sqrt{\frac{\alpha^2}{^2}-\beta}.
+\end{align*}The homogenous, the first part of the solution then becomes
+\begin{align*}
+    u_{h}(t) &= c_1\exp\Bigg[(-\frac{\alpha}{2} + \sqrt{\frac{\alpha^2}{^2}-\beta})t\Bigg] + c_2\exp\Bigg[\Big(-\frac{\alpha}{2} - \sqrt{\frac{\alpha^2}{^2}-\beta}\Big)t\Bigg],\\
+    u_h(t) &=c_1 \exp\Bigg[\Big(-\sigma\omega_0+\sqrt{\omega_0^2(\sigma^2 - 1)}\Big)t\Bigg] + c_2 \exp\Bigg[\Big(-\sigma\omega_0-\sqrt{\omega_0^2(\sigma^2 - 1)}\Big)t\Bigg];\quad \sigma \in[0,1]
+\end{align*}
+\subsection*{c)}
+In order to find the particular solution we make the ansats that the particular solution $u_p(t)$ is on the following form: $u_p(t) = A\exp[i\omega t]$; differating twice yields;
+\begin{align*}
+    u_p(t) &= A\exp[i\omega t],\\
+    \dot{u}_p(t) &= i\omega A\exp[i\omega t]\\
+    \ddot{u}_p(t) &= -\omega^2A\exp[i\omega t].
+\end{align*}Plugging this into the ODE, and instead finding $\tilde{u}_p(t)$ yields;
+\begin{align*}
+    \frac{d^2}{dt^2}\big(\tilde{u}(t)\big) + \frac{\omega_0}{Q}\frac{d}{dt}\big(\tilde{u}(t)\big) + \omega_0^2\tilde{u}(t) = \frac{\omega_0E\omega}{Q}\exp[i\omega t]
+\end{align*}We make the ansats $\tilde{u}(t) = A(\omega)\exp[i\omega t]$,
+\begin{align*}
+    -\omega^2A(\omega)\exp[i\omega t] + i\omega\frac{\omega_0}{Q} A(\omega)\exp[i\omega t] + \omega_0^2A(\omega)\exp[i\omega t] = \frac{\omega_0E\omega}{Q}\exp[i\omega t]\\
+    A(\omega)\exp[i\omega t]\Bigg[-\omega^2 + i\omega\frac{\omega_0}{Q} + \omega_0^2\Bigg] = \frac{\omega_0E\omega}{Q}\exp[i\omega t]
+\end{align*}
+\begin{align*}
+    \implies A(\omega) &= \frac{\omega_0E\omega}{Q\Big[(\omega_0^2-\omega^2) + i\omega\frac{\omega_0}{Q}\Big]}\\
+    A(\omega)&=\frac{\omega_0E\omega}{Q}\Bigg[\frac{\Big((\omega_0^2-\omega^2) - \frac{i\omega\omega_0}{Q}\Big)}{(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}}\Bigg]\\
+    A(\omega)&=\frac{\omega_0E}{Q}\Bigg[\frac{\Big((\omega_0^2-\omega^2) - \frac{i\omega\omega_0}{Q}\Big)}{(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}}\Bigg]\\
+    &=\frac{\omega_0E\omega}{Q}\Bigg[\frac{\exp[-i\theta]}{\Big(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}\Big)^{1/2}}\Bigg]
+\end{align*} The solution thus becomes:
+\begin{align*}
+    u_p(t) &=\mathrm{Re}\Bigg(\frac{\omega_0E\omega}{Q\Big(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}\Big)^{1/2}}\exp\Big[i(\omega t -\theta)\Big]\Bigg)\\
+    &=\frac{\omega_0E\omega}{Q\Big(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}\Big)^{1/2}}\cdot\cos(\omega t - \theta)
+\end{align*}
+\subsection*{d)}
+\begin{align*}
+    \lim_{\omega\to\omega_0\omega}\frac{\omega_0E}{Q\Big(\omega_0^2-\omega^2)^2 - \omega^2 \frac{\omega_0^2}{Q^2}\Big)^{1/2}}\cdot\cos(\omega t - \theta) = \text{undefined}
+\end{align*}This becomes undefined since there is a discharge in the system.
+\section*{Task 4: Thickness distribution of ICE}
+\begin{align}
+    \int_{h_1}^{h_2}dh\Big(g(h,t)\Big) = \frac{A(h_1, h_2)}{\mathcal{A}}
+\end{align}
+\begin{align}
+    \frac{d^2}{dh^2}g(h) + \Big(\frac{1}{H} - \frac{q}{h}\Big)\frac{d}{dh}g(h)+\frac{q}{h^2}g(h) = 0\label{exp: task4}
+\end{align}
+\subsection*{a)}
+We ought to justify that the method of Frobenius is a valid method to solving this ODE.
+\subsection*{b)}
+We seek to find the indicial equation and the recurrence relation for all of the coefficients in the series solution. In order to do this, we firstly states the $g$ can we written in the following manner:
+\begin{align*}
+    g(h) &= \sum_{n = 0}^\infty a_n (h-h_0)^{(n+r)}\\
+    g'(h) &=\sum_{n=0}^\infty \cdot(n+r)\cdot a_n(h-h_0)^{(n+r-1)}\\
+    g''(h)&=\sum_{n=0}^\infty (n+r-1)\cdot(n+r)\cdot a_n(h-h_0)^{(n+r-2)}
+\end{align*}Plugging this into \eqref{exp: task4} we get the following, when $h_0 = 0$:
+\begin{align}
+    &\Bigg[\sum_{n=0}^\infty(n+r-1)\cdot(n+r)\cdot a_n(h)^{(n+r-2)}\Bigg]\nonumber\\
+    &+\Big(\frac{1}{H} - \frac{q}{h}\Big)\Bigg[\sum_{n=0}^\infty(n+r)\cdot a_n(h)^{(n+r-1)}\Bigg]\nonumber\\
+    &+\frac{q}{h^2}\Bigg[\sum_{n = 0}^\infty a_n (h)^{(n+r)}\Bigg] = 0,\nonumber\\
+    \implies &\sum_{n=0}^\infty\Bigg[\Big((n+r)(n+r-1) - (n+r)q + q\Big)\Bigg]a_n(h)^{n+r-2} + \sum_{n = 0}^\infty a_n (h)^{n+r-1}\frac{1}{H}(n+r)=0\nonumber\\
+    \implies &\sum_{m=-1}^\infty\Bigg[\Big((m+r+1)(m+r) - (m+r+1)q + q\Big)\Bigg]a_{m+1}(h)^{m+r-1} + \sum_{n = 0}^\infty a_n (h)^{n+r-1}\frac{1}{H}(n+r)=0\nonumber\\
+    &=\sum_{m=0}^\infty \Bigg[\Big((m+r+1)(m+r) - (m+r+1)q + q\Big)a_{m+1}+\frac{m+r}{H}a_m\Bigg]h^{m+r-1}\nonumber\\
+    &+\underbrace{a_0\Big((r)(r-1) - (r)q + q\Big)h^{r-2}}_{\text{Indicial equation}}=0\label{expr: 4}
+\end{align}Solving for $r$, via quadratic formula yields:
+\begin{align*}
+    r &= +\frac{(1+q)}{2} \pm\frac{1}{2}\sqrt{\Big(1+q\Big)^2-4q}\\
+    &=\frac{(1+q)}{2}\pm\frac{1}{2}\sqrt{(1-q)^2}\\
+    &=\frac{(1+q)}{2}\pm\frac{1-q}{2}\\
+    r&= \{1, q\}
+\end{align*}The recursive relation becomes, from \eqref{expr: 4}:
+\begin{align*}
+    a_{m+1} = -a_m\cdot\frac{m+r}{H\cdot\Big((m+r+1)(m+r) - (m+r+1)q + q\Big)}
+\end{align*}
+\subsection*{c)}
+Choosing $r = q$ makes the recursive relation become:
+\begin{align*}
+    \frac{a_{m+1}}{a_m}&=\frac{1}{H}\cdot\Bigg[\frac{m+1 + q}{(m+1+1)(m+q)-(m+1+q)q + q}\Bigg]\\
+    &=-\frac{1}{H}\frac{1}{m+1},\\
+    a_1 &= -\frac{1}{H}\frac{1}{1}a_0,\\
+    a_2 &= -\frac{1}{H}\frac{1}{2}a_1 = \frac{1}{H^2}\frac{1}{2\cdot 1}a_0,\\
+    a_3 &= -\frac{1}{H}\frac{1}{3}a_2 = -\frac{1}{H^3}\frac{1}{3\cdot2\cdot1}a_0\\
+    \implies a_n &= \frac{a_0}{H^{n}} \cdot \frac{(-1)^{n}}{(n)!}\\
+    \implies g_{p,1}(h)&= a_0\cdot h^q\sum_{n=0}^\infty\frac{(-1)^{n}}{n!}\Bigg(\frac{h}{H}\Bigg)^n\\
+    &=a_0\cdot h^q\exp\Big[-\frac{h}{H}\Big]
+\end{align*}Using the normalization condition $\int dh(g(h)) = 1$ we get:
+\begin{align*}
+    1&=a_0\int_0^\infty dh \Bigg(\underbrace{h^{q} \exp\Big[-\frac{h}{H}\Big]}_{\int dx[ h^{q}\cdot e^{-h/H}] = -\gamma(q+1)H^{q+1}}\Bigg)\\
+    \implies a_0 &=-\frac{1}{\gamma(q+1)H^{q+1}}
+\end{align*}
+
+
+
+
+\end{document}

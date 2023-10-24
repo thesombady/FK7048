@@ -1,0 +1,223 @@
+\section{Practice Exam}
+
+\subsection*{Problem 1)}
+Solve the ODE:
+\begin{align*}
+    y'' + 4y = e^{x}; \quad y(0) = y'(0) = \frac{2}{5}.
+\end{align*}
+
+\subsubsection*{Solution}
+Making the ansats $y = e^{rx}$ gives the characteristic equation:
+\begin{align*}
+    &e^{rx}(r^2 + 4) = 0 \implies r = \pm 2i.\\
+    \implies& y_h(x) = a\cos(2x) + b\sin(2x).
+\end{align*}The particular solution can be found by the method of undetermined coefficients:
+\begin{align*}
+    y_p(x) = Ae^x \implies y_p'(x) = Ae^x \implies y_p''(x) = Ae^x.
+\end{align*}Substituting into the ODE gives:
+\begin{align*}
+    Ae^x + 4Ae^x = e^x \implies A = \frac{1}{5}.
+\end{align*}Thus, the general solution is:
+\begin{align*}
+    y(x) = a\cos(2x) + b\sin(2x) + \frac{1}{5}e^x.
+\end{align*}Applying the initial conditions gives:
+\begin{align*}
+    y(0) = a + \frac{1}{5} = \frac{2}{5} \implies a = \frac{1}{5}\\
+    y'(0) = -2b + \frac{1}{5} = \frac{2}{5} \implies b = -\frac{1}{10}.
+\end{align*}Thus, the solution is:
+\begin{align*}
+    y(x) = \frac{1}{5}\cos(2x) - \frac{1}{10}\sin(2x) + \frac{1}{5}e^x.
+\end{align*}
+
+\subsection*{Problem 2)}
+Explain/Sketch-out (in a few equations and sentences) the following methods for solving 1st Ordinary ODEs:
+\begin{enumerate}
+    \item Seperation of variables
+    \item Exact differential equations
+    \item Homogeneous ODEs
+    \item Linear ODE's
+\end{enumerate}
+
+\subsubsection*{Solution}
+\begin{enumerate}
+    \item \textbf{Seperation of variables}: is a method of solving a PDE by taking it into an ODE form; by the ansatz $u(x,y) = X(x)Y(y)$.
+    \item \textbf{Exact differential equations}: Is a first order ODE where $\frac{dy}{dx} = f(x,y) = \frac{g(x,y)}{h(x,y)}$. In exact differential equations, neither $g$ nor $h$ can be written as a function of only one variable and thus one has to construct the following $\psi_y = g$ and $\psi_x = h$ and then solve the ODE $\frac{d\psi}{dx} = h$.
+    \item \textbf{Homogeneous ODEs}: This type of ODE does not refer to the source-function being $0$ but rather the type of ODE where the function can be written on the followig form $f(kx,ky)=k^nf(x,y)$. Solving such a system one makes a variable substitution and solves the system with the transformed variables.
+    \item \textbf{Linear ODEs}: This type of ODE has the following form: $y' + p(x)y = q(x)$, where $p(x)$ and $q(x)$ are functions of $x$. This type of ODE can be solved by the method of integrating factors, where one multiplies the ODE by the integrating factor $\alpha(x) = e^{\int p(x)dx}$.
+\end{enumerate}
+
+\subsection*{Problem 3)}
+Show that:
+\begin{align*}
+    (1-x^2)y'' -xy' +n^2y = 0,
+\end{align*}can be but put on SL-from with the following substitution: $\sqrt{(1-x^2)}$. Also, explain the orthangonaility condition of the SL problem under the transformation.
+
+\subsubsection*{Solution}
+There exists more than one way of doing this, one would be to compute the weighting-function; if the weighting is the same as the suggested transformation then the transformation is valid; another way would be to plug it into the equation by multiplying both sides by the transform:
+However, in this instance the weighting-function option is opted:
+\begin{align*}
+    w(x) &= \frac{1}{1-x^2}\exp\left[\int \frac{-x}{1-x^2}dx\right]\\
+    &= \frac{1}{1-x^2}\exp\left[\frac{\ln(x^2 -1)}{2}\right] = \frac{\sqrt{x^2 -1}}{1-x^2}\\
+\end{align*}
+
+\subsection*{Problem 4)}
+Solve via the method of Frobenius:
+\begin{align*}
+    x^2y'' -2xy' +y = 0.
+\end{align*}
+
+\subsubsection*{Solution}
+Ansats, centered around $x = 0$:
+\begin{align*}
+    y(x) &= \sum_{n = 0}^\infty a_n x^{n + r},\\
+    y'(x) &= \sum_{n = 0}^\infty a_n(n+r) x^{n + r - 1},\\
+    y''(x) &= \sum_{n = 0}^\infty a_n(n+r)(n+r-1) x^{n + r - 2}.
+\end{align*}Substiting this into the ode yields:
+\begin{align*}
+    &x^2\sum_{n = 0}^\infty a_n(n+r)(n+r-1) x^{n + r - 2} - 2x \sum_{n = 0}^\infty a_n(n+r) x^{n + r - 1} + \sum_{n = 0}^\infty a_n x^{n + r} = 0\\
+    &\sum_{n = 0}^\infty a_n(n+r)(n+r-1) x^{n + r} - 2  a_n(n+r) x^{n + r} + a_n x^{n + r} = 0\\
+    &\sum_{n = 0}^\infty \left[(n+r)(n+r-1) - 2(n+r) + 1\right]a_n x^{n + r} = 0\\
+    &\underbrace{\left[r(r-1)-2r+1\right]a_0x^{r}}_{\text{Indicial eq.}} + \sum_{n = 1}^\infty \left[(n+r)(n+r-1) - 2(n+r) + 1\right]a_n x^{n + r} = 0\\
+    & r^2 - 3r + 1 = 0\implies r=\frac{1}{2}\{3 + \sqrt{5},3 - \sqrt{5}\}\\
+\end{align*}
+
+\subsection*{Problem 5)}
+Use Green's functions to solve the following ODE:
+\begin{align*}
+    y'' = x^2 + 4;\quad y(0) = y'(L) = 0.
+\end{align*}
+
+\subsubsection*{Solution}
+Being by stating that we have the following form:
+\begin{align*}
+    &p(x)y'' + q(x)y' + r(x)y = 0.\\
+    \implies&\G_2'(s,s) - \G_1'(s,s) = 1 \quad \& \quad \G_2(s,s) = \G_1(s,s) \\
+    \mathcal{L}(\G) &= G''(x) = \delta(x - s)\\
+    \G_1(x,s) &= A_1x + B_1 \quad \&\quad \G_2(x,s) = A_2x + B_2\\
+    \G_1(0,s) &= 0 \implies B_1 = 0 \quad\&\quad \G_2'(L,s) = 0 \implies A_2 = 0\\
+    \G_1(s,s) &= \G_2(s,s)\implies A_1s = B_2\\
+    G_2'(s,s) - G_1'(s,s) &= 0 - A_1 = 1 \implies A_1 = -1\\
+    \implies \G(x,s) &= \begin{cases}
+        -x; \quad x \in[0,s]\\
+        -s; \quad x \in[0,L]
+    \end{cases}
+\end{align*}Thus, the solution is given by:
+\begin{align*}
+    y(x) &= \int_0^x -x \cdot (s^2 + 4)ds + \int_x^L -s \cdot (s^2 + 4)ds\\
+    &= -x\left[\frac{s^3}{3}+4s\right]_{s = 0}^x - \left[\frac{s^4}{4} + 2s^2\right]_{s=x}^L\\
+    &= -x\left[\frac{x^3}{3} + 4x\right] - \left[\frac{L^4}{4} + 2L^2\right] + \left[\frac{x^4}{4} + 2x^2\right]\\
+\end{align*}
+
+\subsection*{Problem 6)}
+Calculate the contour integral:
+\begin{align*}
+    \oint_\Gamma \frac{4z}{z^2(z + 1)}dz
+\end{align*}where $\Gamma$ is a circle of radius $3$.
+
+\subsubsection*{Solution}
+Rewriting the integral:
+\begin{align*}
+    \oint_\Gamma\frac{4}{z(z + 1)}dz = \oint_\Gamma\frac{4}{z^2 + z}dz.
+\end{align*}Finding the roots of the denominator:
+\begin{align*}
+    z^2 + z = 0 \implies z(z + 1) = 0 \implies z = 0, -1.
+\end{align*}where both roots are contained within the contour and are simple poles. The residues can be computed in accordance to eq \eqref{eq:res1} and gives:
+\begin{align*}
+    \res{f}{0} &= \lim_{z\to0}\frac{z4}{z(z-1)} = \frac{4}{-1} = -4\\
+    \res{f}{-1} &=\lim_{z\to -1} (z + 1)\frac{4}{z(z+1)} = -4
+\end{align*}Using the theroem of residues gives:
+\begin{align*}
+    \oint_\Gamma\frac{4z}{z^2(z+1)}dz = 2\pi i\left(\res{f}{0} + \res{f}{-1}\right) = 2\pi i(-4 - 4) = -16\pi i
+\end{align*}
+
+\subsection*{Problem 7)}
+Calculate the general solution to $\ln(1 + i)$ and describe a method for obtaining a simple solution.
+
+\subsubsection*{Solution}
+We begin by saying that $z = 1 + 1i$ and compute the euler form:
+\begin{align*}
+    z = r^{i\theta};\quad  r = \sqrt{2}\quad  \& \quad \theta = \arctan(1) = \frac{\pi}{4}.
+\end{align*}
+Thus, the general solution is given by:
+\begin{align*}
+    \ln(1 + i) = \ln(\sqrt{2}) + i\left(\frac{\pi}{4} + 2\pi n\right).
+\end{align*}To obtain a simple solution one can use the following identity:
+
+\subsection*{Problem 8)}
+Using Rodrigues formula
+\begin{align*}
+    L_n(x) = \frac{1}{2^nn!}\frac{d^n}{dx^n}(x^2-1)^n,
+\end{align*}and recursion formula:
+\begin{align}
+    (2l +  1)(1-x^2)^{\frac{1}{2}}P_{l}^m(x) = P_{l - 1}^{m + 1}(x) - P_{l + 1}^{m + 1}(x) \label{eq: recursion}
+\end{align}one wish to compute $P_2^1(x)$. 
+
+\subsubsection*{Solution}
+Rearranging eq \eqref{eq: recursion} and setting $l =1$ and $m = 0$ gives:
+\begin{align*}
+    P_{l + 1}^{m + 1}(x) &= -(2l +  1)(1-x^2)^{\frac{1}{2}}P_{l}^m(x) + P_{l - 1}^{m + 1}(x)\\
+    P_{2}^1(x) &= -(2 +  1)(1-x^2)^{\frac{1}{2}}P_{1}^0(x) + P_{0}^1(x)\\
+    &= -3\sqrt{1- x^2}P_1(x) + (-1)^1\sqrt{1 - x^2}\frac{d}{dx}P_0(x)\\
+    &= -3\sqrt{1- x^2}P_1(x) = -3x\sqrt{1 - x^2} 
+\end{align*}
+
+\subsection*{Problem 9)}
+Provide a general solution to the following PDE:
+\begin{align*}
+    \frac{\partial \psi}{\partial x} + \frac{\partial \psi}{\partial y} + \frac{\partial \psi}{\partial z} = x +y
+\end{align*}
+
+\subsubsection*{Solution}
+One recoginize the following:
+\begin{align*}
+    [1,1,1]\cdot\begin{pmatrix}
+        \partial_x\\
+        \partial_y\\
+        \partial_z
+    \end{pmatrix}\psi = x +y
+\end{align*}
+\begin{center}
+    one could also say $\nabla\cdot\mathbf{\psi} = x + y$.
+    Next step?
+\end{center}
+
+\subsection*{Problem 10)}
+Calculate the Fourier and Laplace Transforms (if they are defined) of the function
+\begin{align*}
+    f(x) = 1-2x; \quad x\in\left[0,\frac{1}{2}\right].
+\end{align*}
+\subsubsection*{Solution}
+\begin{align*}
+   \hat{f}(s) &= \int_0^\infty f(t)e^{-st}dt = \int_0^{\frac{1}{2}} (1 - 2t)e^{-st}dt\\
+   &= \int_0^{\frac{1}{2}} e^{-st}dt - 2\int_0^{\frac{1}{2}} te^{-st}dt\\
+   &= \Bigg[\frac{e^{-st}}{-s}\Bigg]_{t = 0}^{\frac{1}{2}} - 2 \Bigg[\frac{te^{-st}}{-s}\Bigg]_{t = 0}^{\frac{1}{2}} + 2\int_0^{\frac{1}{2}} \frac{e^{-st}}{s}dt\\
+   &=\frac{e^{-0.5s} - 1}{-s} - \frac{e^{-0.5s}}{-s} + 2 \Bigg[\frac{e^{-st}}{s^2}\Bigg]_{t = 0}^\frac{1}{2}\\
+   &=\frac{1}{s} + 2 \Bigg[\frac{e^{-0.5s} - 1}{s^2}\Bigg]
+\end{align*}
+\begin{align*}
+    \tilde{f}(\w) &= \int_{-\infty}^\infty f(t)e^{-i\w t}dt = \int_0^{\frac{1}{2}} (1 - 2t)e^{-i\w t}dt\\
+    &=\int_0^{\frac{1}{2}}e^{-i\w t}dt - 2\int_0^{\frac{1}{2}}te^{-i\w t}dt\\
+    &=\Bigg[\frac{e^{-i\w t}}{-i\w}\Bigg]_{t = 0}^\frac{1}{2} - 2\Bigg[\frac{te^{-i\w t}}{-i\w}\Bigg]_0^{\frac{1}{2}} + 2\int_{0}^\frac{1}{2}\frac{e^{-i\w t}}{-i\w}dt\\
+    &=\frac{i}{\w}\left(e^{i0.5\w} - 1\right) - \frac{ie^{i0.5\w}}{\w} + 2\Bigg[\frac{e^{i\w t}}{-\w^2}\Bigg]_{0}^\frac{1}{2}\\
+    &=\frac{i}{\w} - \frac{2}{\w}\left(e^{-i0.5\w} - 1\right) 
+\end{align*}
+
+\subsection*{Problem 11)}
+Solve the PDE:
+\begin{align*}
+    a \frac{\partial^2 \psi}{\partial x^2} = \frac{\partial \psi}{\partial t}.
+\end{align*}For an infinitely long rod in one dimension, $x\in(-\infty, \infty)$, for a solution with a heat pulse: $\psi_0(x)=A\delta(x)$.
+\subsubsection*{Solution}
+Rewrite the function initial-condition: $\psi(x,0) = A\delta(x)$. Assume that $\psi$ can be written as a fourier transform where the dimensional component is transformed.
+\begin{align*}
+    \tilde{\psi}(k, t) = \int_{-\infty}^\infty \psi(x,t)e^{-ik x}dx
+\end{align*}Using eq \eqref{eq: Fourier derivative} one has:
+\begin{align*}
+    a \left(-k^2\cdot \tilde{\psi}(k, t)\right) = \frac{\partial}{\partial t}\tilde{\psi}(k, t).
+\end{align*}This is now an ODE of the first kind which can be solved as follows:
+\begin{align*}
+    \psi(k, t) &= \psi(k, 0)e^{-a k^2 t}.
+\end{align*}Either transform back, or transform the initial-condition.
+\begin{align*}
+    \int_{-\infty}^{\infty}A\delta(x)e^{-ikx}dx = A
+\end{align*}Thus the solution, in $k$-space is given by: $\psi(k, t) = Ae^{-ak^2t}.$ Transforming back will yield an indefinite interal known as the error-function.

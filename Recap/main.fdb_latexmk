@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1698141877 "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" "main.pdf" "main" 1698141879 0
+["pdflatex"] 1698146429 "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" "main.pdf" "main" 1698146431 0
   "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" 1698136816 38858 dece168e6eacc2151f228182c6062ff8 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1678549815 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1678549815 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -254,11 +254,11 @@
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/web2c/texmf.cnf" 1678549815 40748 4081c8bc921e56c865f975bd762e388c ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1678549815 7884066 8197b5e86c7bf6d7352283907f10d5c2 ""
   "exam.tex" 1698134434 10719 5fd6ace5d6a0196c68986f587d06e9ac ""
-  "main.aux" 1698141879 6702 9b82d5d11ab35227598c4dd9dc4565c2 "pdflatex"
-  "main.out" 1698141879 5756 5f1083a7fafd201b4de806f145dcde26 "pdflatex"
+  "main.aux" 1698146430 6702 4f7ec58265f7fac24787b172c40f3076 "pdflatex"
+  "main.out" 1698146430 5756 5f1083a7fafd201b4de806f145dcde26 "pdflatex"
   "main.tex" 1698136816 38858 dece168e6eacc2151f228182c6062ff8 ""
-  "main.toc" 1698141879 3135 df31d5053782ed67a993964d99c62cad "pdflatex"
-  "prev_exam1.tex" 1698141877 6089 3b433902e38b048daac377aad388440c ""
+  "main.toc" 1698146430 3135 8b50f9de148cf017f94db38528e86218 "pdflatex"
+  "prev_exam1.tex" 1698146429 8652 aad868daf004c51137e1b8257110be4d ""
   "prev_exam2.tex" 1698137969 2563 8b925fba8fd117978a4faac04c660c0c ""
   (generated)
   "main.aux"

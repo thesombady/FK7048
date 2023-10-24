@@ -112,6 +112,20 @@ Provide all poles and calculate all residues for:
 \end{align*}
 
 \subsubsection*{Solution}
+Rewriting the function as:
+\begin{align*}
+    f(z) = \frac{e^{iz}}{(z+ i)(z- i)(z+2)^2}.
+\end{align*}From there one sees that there exists three poles, $z = i, -i, -2$, the first of the two poles are simple poles and last is a second order pole.
+\begin{align*}
+    \res{f}{i} &= \lim_{z\to i}\frac{(z-i)e^{iz}}{(z-i)(z+i)(z+2)^2} = \frac{e^{-1}}{2i(i + 2)^2}\\
+    &=\frac{e^{-1}}{2i(3 + 4i)} = \frac{e^{-1}}{6i - 4}\\
+    \res{f}{-i} &= \lim_{z\to -i}\frac{(z +i)e^{iz}}{(z-i)(z+i)(z+2)^2} = \frac{e}{-2i(-i + 2)^2}\\
+    &=\frac{ie}{6- 8i}\\
+    \res{f}{-2} &= \lim_{z\to -2}\frac{d}{dz}\left(\frac{(z-2)^2e^{iz}}{(z-i)(z+i)(z-2)^2}\right)\\
+    &=\lim_{z\to -2}\frac{d}{dz}\left(\frac{e^{iz}}{(z+i)(z-i)}\right)\\
+    &=\lim_{z\to-2} \frac{i e^{i z} (z^2 + 2 i z + 1)}{(z^2 + 1)^2}\\
+    &=\frac{i e^{-2i} (4 -4 i  + 1)}{(4 + 1)^2} = \frac{ie^{-2i}(3-4i)}{25}
+\end{align*}
 
 \subsection*{Problem 8}
 Calculate the Fourier transform of the triangle pulse:
@@ -123,6 +137,20 @@ Calculate the Fourier transform of the triangle pulse:
 \end{align*}
 
 \subsubsection*{Solution}
+Using the following definitions:
+\begin{align*}
+    \tilde{f}(\w) &=\int_{-\infty}^\infty f(t)e^{-i\w t}dt\\
+    f(t) &= \frac{1}{2\pi}\int_{-\infty}^\infty \tilde{f}(\w)e^{i\w t}d\w
+\end{align*}The transform is computed as:
+\begin{align*}
+    \tilde{f}(\w) &= \int_{-\infty}^\infty dt\left(f(t)e^{-i\w t}\right)\\
+    &= \int_{-1}^0 (t+1)e^{-i\w t}dt + \int_{0}^1(1-t)e^{-i\w t}dt\\
+    &= \int_{-1}^0 e^{-i\w t}dt + \int_{-1}^0 te^{-i\w t}dt + \int_{0}^1e^{-i\w t}dt - \int_{0}^1te^{-i\w t}dt\\
+    &= \int_{-1}^1 e^{-i\w t}dt + \int_{-1}^0 te^{-i\w t}dt - \int_{0}^1te^{-i\w t}dt\\
+    &= \Bigg[\frac{e^{-i\w t}}{-i\w}\Bigg]_{-1}^1 +\Bigg[\frac{te^{i\w t}}{-i\w}\Bigg]_{ -1}^1 - \int_{-1}^0 \frac{e^{-i\w t}}{-i\w}dt - \Bigg[\frac{te^{-i\w t}}{-i\w}\Bigg]_{0}^1 + \int_{0}^1\frac{e^{-i\w t}}{-i\w}dt\\
+    &= \Bigg[\frac{e^{-i\w t}}{-i\w}\Bigg]_{-1}^1 +\Bigg[\frac{te^{i\w t}}{-i\w}\Bigg]_{ -1}^1 - \Bigg[\frac{e^{-i\w t}}{-\w^2}\Bigg]_{-1}^0 - \Bigg[\frac{te^{-i\w t}}{-i\w}\Bigg]_{0}^1 + \Bigg[\frac{e^{-i\w t}}{-\w^2}\Bigg]_{0}^1\\
+    &= \frac{4}{\w}\sin(\w) + \frac{2}{\w^2}\left(\cos(\w) - 1\right)
+\end{align*}
 
 \subsection*{Problem 9}
 The beta function is defined as:
@@ -131,6 +159,10 @@ The beta function is defined as:
 \end{align*}Compute $\beta(3,4)$.
 
 \subsubsection*{Solution}
+Since both are integers, one can use the factorial expression:
+\begin{align*}
+    \beta(3,4) = \frac{2!3!}{6!} = \frac{2}{6\cdot 5\cdot 4} = \frac{1}{6\cdot 5 \cdot 2} = \frac{1}{60}
+\end{align*}
 
 \subsection*{Problem 10}
 Use the Method of Characteristics to solve:
@@ -139,3 +171,12 @@ Use the Method of Characteristics to solve:
 \end{align*}with the boundary conditions: $u(x,x^2) = x$.
 
 \subsubsection*{Solution}
+Using the Lagrange-Charpit equations, eq \eqref{eq: Lagrange-Charpit Equation}:
+\begin{align*}
+    \colorboxed{blue}{\frac{dx}{x} = \frac{dy}{y}} = \frac{dz}{2x}.
+\end{align*}Using the framed equations one gets:
+\begin{align*}
+    \frac{dy}{y} &= \frac{dx}{x} \\
+    \implies \ln(y) &= \ln(x) + \tilde{c}_1\\
+    \implies y &= c_1x\quad c_1 = \frac{y}{x}\\
+\end{align*}

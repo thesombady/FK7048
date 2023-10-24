@@ -7,6 +7,24 @@ Solve the differential equation:
 \end{align*}
 
 \subsubsection*{Solution}
+Solving the homogenous equation:
+\begin{align*}
+    x y' + 2y &= 0\\
+    xy' &= -2y\\
+    \frac{dy}{y} &= -\frac{2}{x}dx\\
+    \ln(y) &= -2\ln(x) + c_1\\
+    y &= e^{-2\ln(x) + c1}\\
+    &= \frac{c}{x^2}
+\end{align*}The particular solution is expected to be on the form: $y_p(x) = ax^2 + bx + c$, so we can insert this into the equation:
+\begin{align*}
+    x\cdot(2ax) + 2 \cdot(ax^2  + bx + c) &= 10x^2\\ 
+    2ax^2 + 2bx + 2c &= 10x^2\implies b = c = 0\quad \&\quad a = 5\\
+\end{align*}Thus the total solution is given by:
+\begin{align*}
+   y(x) &= \frac{c}{x^2} + 5x^2 \\
+   y(1) &= c + 5 = 3 \implies c = -2\\
+   y(x) &= \frac{-2}{x^2} + 5x^2
+\end{align*}
 
 \subsection*{Problem 2}
 Use a Green's function approach to solve the differential equation:
@@ -14,6 +32,23 @@ Use a Green's function approach to solve the differential equation:
     y'' = 2x + 1; \quad y(0) = y'(L) = 0.
 \end{align*}
 \subsubsection*{Solution}
+\begin{align*}
+    \mathcal{L} &= \frac{d^2}{dx^2}\\
+    \mathcal{L}(y) &= 2x + 1\\
+    \mathcal{L}\Big(\G(x,s)\Big) &= \delta(x - s)\\
+    \G(x,s) &= ax + b\\
+    \G_1(0,s) &= a_1\cdot0+b_1 = 0\implies b_1 = 0\\
+    \G_2'(L,s) &= a_2 = 0\implies a_2 = 0\\
+    \G_1(s,s) &= \G_2(s,s)\implies a_1s =b_2\\
+    \G_2'(s,s) - \G_1'(s,s) &= 1\implies 0 - a_1 = 1\implies a_1 = -1\\
+    \G(x,s) &= \begin{cases}
+        -x; x\in[0,s]\\
+        -s; x\in(s,L]
+    \end{cases}
+\end{align*}The solution is then given by:
+\begin{align*}
+    y(x) &= \int_0^x (2s + 1)(-x)ds + \int_x^L(2s + 1)(-s)ds
+\end{align*}
 
 \subsection*{Problem 3}
 Write down one equation that fulfills the following definitions. You do not need to solve equations that you write down:
@@ -26,7 +61,16 @@ Write down one equation that fulfills the following definitions. You do not need
 \end{enumerate}
 
 \subsubsection*{Solution}
-
+\begin{enumerate}
+    \item An ODE that is in Sturm-Liouville form. Explain why it is in Sturm Liouville form:
+    \item A 2nd order PDE that could be solved using the Method of Characteristics:
+    \item An ODE that is inhomogeneous:
+    \item A contour integral that has a pole, but would evaluate to 0. Specify both the integral and the contour that you chose:
+    \item A complex function that is continuous but nowhere differentiable:
+\end{enumerate}
+\begin{center}
+    Huuh?
+\end{center}
 \subsection*{Problem 4}
 Solve the differential equation using the Method of Frobenius:
 \begin{align*}
@@ -34,6 +78,13 @@ Solve the differential equation using the Method of Frobenius:
 \end{align*}Remember to write out full solutions for y1 and y2. These solutions may still be infinite sums.
 
 \subsubsection*{Solution}
+\begin{align*}
+    y'' &+ \frac{1}{2x}y' + \frac{1}{4x}y = 0\\
+    y(x) &= \sum_{n=0}^\infty a_nx^{n + r}\\
+    y'(x) &= \sum_{n=0}^\infty a_n(n+r)x^{n + r - 1}\\
+    y''(x) &= \sum_{n=0}^\infty a_n(n+r)(n+r-1)x^{n + r - 2}\\
+    \implies& \sum_{n=0}^\infty a_n(n+r)(n+r-1)x^{n + r - 2}+ \frac{1}{2}\sum_{n=0}^\infty a_n(n+r)x^{n + r - 2} + \frac{1}{4}\sum_{n=0}^\infty a_nx^{n + r - 1} = 0\\
+\end{align*}
 
 \subsection*{Problem 5}
 Solve:
@@ -42,6 +93,10 @@ Solve:
 \end{align*}
 
 \subsubsection*{Solution}
+\begin{align*}
+    \int_{-\infty}^{\infty}f(x)\delta(x - x_0)dx &= f(x_0)\\
+    \implies \int_{1}^{\infty}\frac{\sin(x)}{x^2 + 3}\delta(x - 4)dx &= \frac{\sin(4)}{19}\\
+\end{align*}
 
 \subsection*{Problem 6}
 Solve the integral:

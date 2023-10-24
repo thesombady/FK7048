@@ -1,0 +1,15 @@
+integrand
+eq
+ODEs
+homogenuity
+Lagrange-Charpit
+calligra
+Sturm-Liouville
+Sturm
+PDE
+Frobenius
+Schrödingers
+Evensen
+mystyle
+backgroundcolor
+commentstyle

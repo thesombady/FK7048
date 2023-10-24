@@ -3,17 +3,17 @@
 \subsection*{Problem 1}
 Provide the formula for 4 of the 5 following equations and give an example of a physical scenario in which they may be employed:
 \begin{enumerate}
-    \item \textbf{Poission's equation}:
+    \item \textbf{Poisson's equation}:
     \item \textbf{Heat equation}:
-    \item \textbf{Schrödingers equation}:
+    \item \textbf{Schrödinger's equation}:
     \item \textbf{Klein Gordon equation}:
     \item \textbf{Wave-equation}:
 \end{enumerate}
 \subsubsection*{Solution}
 \begin{enumerate}
-    \item \textbf{Poission's equation}: $\nabla^2u = f$, when dealing with electrostatics.
+    \item \textbf{Poisson's equation}: $\nabla^2u = f$, when dealing with electrostatics.
     \item \textbf{Heat equation}: $\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}$, when dealing with heat diffusion and heat transfer.
-    \item \textbf{Schrödingers equation}: $-\frac{\hbar^2}{2m}\nabla^2\psi + V\psi= E\psi$ when dealing with quantum mechanics; e.g. the hydrogen atom.
+    \item \textbf{Schrödinger's equation}: $-\frac{\hbar^2}{2m}\nabla^2\psi + V\psi= E\psi$ when dealing with quantum mechanics; e.g. the hydrogen atom.
     \item \textbf{Klein Gordon equation}: $(\partial_\mu\partial^\mu + m^2)\phi = 0$, when dealing with relativistic quantum mechanics; e.g. the Klein Gordon field.
     \item \textbf{Wave-equation}: $\frac{\partial^t u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$ when dealing with waves; e.g. sound waves.
 \end{enumerate}
@@ -41,7 +41,7 @@ Use contour integration to evaluate the integral:
 \end{align*}
 
 \subsubsection*{Solution}
-Firsly one needs to find the residues of the integrand of:
+Firstly one needs to find the residues of the integrand of:
 \begin{align*}
     \oint_\Gamma \frac{1}{z^3 + 1}dz,
 \end{align*}which is done by the following:
@@ -51,7 +51,7 @@ Firsly one needs to find the residues of the integrand of:
 \begin{align*}
     \res{f}{-1} &= \lim_{z\to-1}\frac{(z+1)}{(z+1)(z^2 + z + 1)} = 1.\\
     \res{f}{\frac{1}{2} + i\frac{\sqrt{3}}{2}}&=\lim_{z\to z_0}\frac{(z - z_0)}{(z+1)(z - z_0)(z -z_1)} = \frac{1}{z_0 + 1}\cdot\frac{1}{(z_0-z_1)}
-\end{align*}One then defines a contour that goes from $0$ to $R$ on the real axis, and then a quarter-circle of radius $R$ in the upper half plane. where $R$ goes to infinity. Then:
+\end{align*}One then defines a contour that goes from $0$ to $R$ on the real axis, and then a quarter-circle of radius $R$ in the upper half plane, where $R$ goes to infinity. Then:
 \begin{align*}
     \oint_\Gamma\frac{1}{z^3 + 1}dz &= \int_{0}^R\frac{1}{x^3 + 1}dx + \underbrace{\int_{\Gamma_R}\frac{1}{z^3 + 1}dz}_{ = 0}\\
     \lim_{R\to\infty}\int_0^R\frac{1}{x^3 + 1}dx &= 2\pi i \frac{1}{\frac{1}{2} + i\frac{\sqrt{3}}{2} + 1}\cdot\frac{1}{(\frac{1}{2} + i\frac{\sqrt{3}}{2}-\frac{1}{2} - i\frac{\sqrt{3}}{2})}\\
@@ -80,11 +80,11 @@ Remember that homogenuity is given by: $f(kx) = k^nf(x)$.
 \subsection*{Problem 5}
 Find a general solution for this partial differential equation
 \begin{align*}
-    \frac{\partial u}{\partial t} - \lambda \frac{\partial^2u}{\partial x^2} = 0.
+    \frac{\partial u}{\partial t} - \lambda \frac{\partial^2u}{\partial x^2} = 0,
 \end{align*}where $\lambda$ is taken to be a positive number and the solution fulfills boundary conditions $u(0, t) = u(L, t) = 0$.
 
 \subsubsection*{Solution}
-Using seperation of variables, and moving one term to the other side:
+Using separation of variables, and moving one term to the other side:
 \begin{align*}
     &T'(t)X(x) = \lambda T(t)X''(x)\\
     &\frac{T'(t)}{T(t)} = \lambda \frac{X''(x)}{X(x)} = \mu^2\\
@@ -173,10 +173,29 @@ Use the Method of Characteristics to solve:
 \subsubsection*{Solution}
 Using the Lagrange-Charpit equations, eq \eqref{eq: Lagrange-Charpit Equation}:
 \begin{align*}
-    \colorboxed{blue}{\frac{dx}{x} = \frac{dy}{y}} = \frac{dz}{2x}.
+    \colorboxed{blue}{\frac{dx}{x} = \frac{dy}{y}} = \frac{du}{2x}.
 \end{align*}Using the framed equations one gets:
 \begin{align*}
     \frac{dy}{y} &= \frac{dx}{x} \\
     \implies \ln(y) &= \ln(x) + \tilde{c}_1\\
     \implies y &= c_1x\quad c_1 = \frac{y}{x}\\
+\end{align*}Taking the any other combination of the equations, since the boundary condition contains $x$ one uses the $x$ derivative:
+\begin{align*}
+    \frac{dx}{x} &= \frac{du}{2x}\\
+    2x + c_2 = u&\implies c_2 = u - 2x
+\end{align*}Combining this gives:
+\begin{align*}
+    G(c_1) &= c_2\\
+    G\left(\frac{y}{x}\right) &= u - 2x\\
+\end{align*}Using the condition posed by $u(x, x^2) = x$ gives that the $y$-component can be written as $x^2$ and thus one has the following:
+\begin{align*}
+    G\left(\frac{y}{x}\right) &= G\left(\frac{x^2}{x}\right) = G(x) = u(x, x^2) - 2x = (x) - 2x = -x\\
+\end{align*}So the function $G(x)$ only returns the negative of the argument. Thus the solution is given by:
+\begin{align*}
+    u(x,y) = -\left(\frac{y}{x}\right) + 2x
 \end{align*}
+\vspace*{4cm}
+\begin{center}
+    \color{red}
+    \boxed{\color{black}\text{Previous exam 2021 is concluded here.}}
+\end{center}

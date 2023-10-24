@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1698134435 "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" "main.pdf" "main" 1698134436 0
-  "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" 1698133062 38557 9780c4ee8c802eb4388d413cd9ad4fbf ""
+["pdflatex"] 1698141877 "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" "main.pdf" "main" 1698141879 0
+  "/Users/andreas/Desktop/school/fk7048/Recap/main.tex" 1698136816 38858 dece168e6eacc2151f228182c6062ff8 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1678549815 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1678549815 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1678549815 4609045 74543da1ab9350ba886fce0af49a2cfd ""
@@ -254,10 +254,12 @@
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/web2c/texmf.cnf" 1678549815 40748 4081c8bc921e56c865f975bd762e388c ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1678549815 7884066 8197b5e86c7bf6d7352283907f10d5c2 ""
   "exam.tex" 1698134434 10719 5fd6ace5d6a0196c68986f587d06e9ac ""
-  "main.aux" 1698134436 6466 b4584d10dc830626cbcf74982d3aad3b "pdflatex"
-  "main.out" 1698134436 5474 7c8c464a134ba266ea2bd56ddec98224 "pdflatex"
-  "main.tex" 1698133062 38557 9780c4ee8c802eb4388d413cd9ad4fbf ""
-  "main.toc" 1698134436 2981 0134541bfc01670cfa80c7d0f032249f "pdflatex"
+  "main.aux" 1698141879 6702 9b82d5d11ab35227598c4dd9dc4565c2 "pdflatex"
+  "main.out" 1698141879 5756 5f1083a7fafd201b4de806f145dcde26 "pdflatex"
+  "main.tex" 1698136816 38858 dece168e6eacc2151f228182c6062ff8 ""
+  "main.toc" 1698141879 3135 df31d5053782ed67a993964d99c62cad "pdflatex"
+  "prev_exam1.tex" 1698141877 6089 3b433902e38b048daac377aad388440c ""
+  "prev_exam2.tex" 1698137969 2563 8b925fba8fd117978a4faac04c660c0c ""
   (generated)
   "main.aux"
   "main.log"

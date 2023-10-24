@@ -1,0 +1,141 @@
+\section{Previous exam 2021}
+
+\subsection*{Problem 1}
+Provide the formula for 4 of the 5 following equations and give an example of a physical scenario in which they may be employed:
+\begin{enumerate}
+    \item \textbf{Poission's equation}:
+    \item \textbf{Heat equation}:
+    \item \textbf{Schrödingers equation}:
+    \item \textbf{Klein Gordon equation}:
+    \item \textbf{Wave-equation}:
+\end{enumerate}
+\subsubsection*{Solution}
+\begin{enumerate}
+    \item \textbf{Poission's equation}: $\nabla^2u = f$, when dealing with electrostatics.
+    \item \textbf{Heat equation}: $\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}$, when dealing with heat diffusion and heat transfer.
+    \item \textbf{Schrödingers equation}: $-\frac{\hbar^2}{2m}\nabla^2\psi + V\psi= E\psi$ when dealing with quantum mechanics; e.g. the hydrogen atom.
+    \item \textbf{Klein Gordon equation}: $(\partial_\mu\partial^\mu + m^2)\phi = 0$, when dealing with relativistic quantum mechanics; e.g. the Klein Gordon field.
+    \item \textbf{Wave-equation}: $\frac{\partial^t u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$ when dealing with waves; e.g. sound waves.
+\end{enumerate}
+
+\subsection*{Problem 2}
+Solve the differential equation:
+\begin{align*}
+    2xydx + (x^2 + 3y^2)dy = 0.
+\end{align*}
+\note You will only be able to find an implicit solution for $x$ and $y$ (but your solution should
+not include their derivatives).
+
+\subsubsection*{Solution}
+This is a homogeneous ODE, so we can use the substitution $y = vx$ to get:
+\begin{align*}
+    &dy = vdx + xdv\\
+    \implies& v(dx) + (x^2 + 3v^2x^2)(vdx + xdv) = 0\\
+    \implies& vdx + x^2(1 + 3v^2)(vdx + xdv) = 0\\
+\end{align*}
+
+\subsection*{Problem 3}
+Use contour integration to evaluate the integral:
+\begin{align*}
+    \int_{0}^\infty \frac{1}{x^3 + 1}dx.
+\end{align*}
+
+\subsubsection*{Solution}
+Firsly one needs to find the residues of the integrand of:
+\begin{align*}
+    \oint_\Gamma \frac{1}{z^3 + 1}dz,
+\end{align*}which is done by the following:
+\begin{align*}
+    z^3 - 1= (z+ 1)(z^2+z+1) = 0\implies z = -1, \frac{1}{2}\{1 + i\sqrt{3}, 1- i\sqrt{3}\}
+\end{align*}which is a simple pole. The residue is then given by eq \eqref{eq:res1}:
+\begin{align*}
+    \res{f}{-1} &= \lim_{z\to-1}\frac{(z+1)}{(z+1)(z^2 + z + 1)} = 1.\\
+    \res{f}{\frac{1}{2} + i\frac{\sqrt{3}}{2}}&=\lim_{z\to z_0}\frac{(z - z_0)}{(z+1)(z - z_0)(z -z_1)} = \frac{1}{z_0 + 1}\cdot\frac{1}{(z_0-z_1)}
+\end{align*}One then defines a contour that goes from $0$ to $R$ on the real axis, and then a quarter-circle of radius $R$ in the upper half plane. where $R$ goes to infinity. Then:
+\begin{align*}
+    \oint_\Gamma\frac{1}{z^3 + 1}dz &= \int_{0}^R\frac{1}{x^3 + 1}dx + \underbrace{\int_{\Gamma_R}\frac{1}{z^3 + 1}dz}_{ = 0}\\
+    \lim_{R\to\infty}\int_0^R\frac{1}{x^3 + 1}dx &= 2\pi i \frac{1}{\frac{1}{2} + i\frac{\sqrt{3}}{2} + 1}\cdot\frac{1}{(\frac{1}{2} + i\frac{\sqrt{3}}{2}-\frac{1}{2} - i\frac{\sqrt{3}}{2})}\\
+    &= 2\pi i\frac{1}{\frac{1}{2} + \frac{i\sqrt{3}}{2}}\cdot\frac{1}{i\sqrt{3}}\\
+    &=2\pi i\frac{1}{(\frac{i\sqrt{3}}{2} - \frac{3}{2})}
+\end{align*}
+
+\subsection*{Problem 4}
+Write down one example that fulfills the definition for each of the following ODEs, you do not need to solve them:
+\begin{enumerate}
+    \item An ODE that is not linear, but is homogeneous:
+    \item Has an order of 4:
+    \item Is of degree 2:
+    \item Is linear, but not homogeneous:
+\end{enumerate}
+
+\subsubsection*{Solution}
+Remember that homogenuity is given by: $f(kx) = k^nf(x)$.
+\begin{enumerate}
+    \item \textbf{An ODE that is not linear, but is homogeneous:} $y' = -\frac{x}{y + 1}$
+    \item \textbf{Has an order of 4:} $y^{(4)} + 1 = 0$.
+    \item \textbf{Is of degree 2:} $y' = \sqrt{1 + x}$
+    \item \textbf{Is linear, but not homogeneous:} $y' + 2y = 2e^{2x}$.
+\end{enumerate}
+
+\subsection*{Problem 5}
+Find a general solution for this partial differential equation
+\begin{align*}
+    \frac{\partial u}{\partial t} - \lambda \frac{\partial^2u}{\partial x^2} = 0.
+\end{align*}where $\lambda$ is taken to be a positive number and the solution fulfills boundary conditions $u(0, t) = u(L, t) = 0$.
+
+\subsubsection*{Solution}
+Using seperation of variables, and moving one term to the other side:
+\begin{align*}
+    &T'(t)X(x) = \lambda T(t)X''(x)\\
+    &\frac{T'(t)}{T(t)} = \lambda \frac{X''(x)}{X(x)} = \mu^2\\
+    \implies T(t) &= Ae^{\mu^2 t}\\
+    \implies X(x) &= a_1\sin\left(\frac{\mu}{\sqrt{\lambda}} x\right) + a_2\cos\left(\frac{\mu}{\sqrt{\lambda}} x\right)\\
+\end{align*}The coefficient $a_2$ is zero from the $u(0,t) = 0$ boundary condition. The other boundary condition gives:
+\begin{align*}
+    X(L) = a_1\sin\left(\frac{\mu}{\sqrt{\lambda}} L\right) = 0\implies \frac{\mu}{\sqrt{\lambda}}L = n\pi\implies \mu_n = \frac{n\pi}{L}\sqrt{\lambda}
+\end{align*}Thus the final solution is given by:
+\begin{align*}
+    u_n(x,t) = Ae^{\mu^2t}\sin\left(\mu_nx\right)
+\end{align*}
+\subsection*{Problem 6}
+Take a break! You are more than halfway done. Don't put anything here (or potentially make a doodle in the space provided below) and you receive 5 points.
+
+\subsubsection*{Solution}
+
+\subsection*{Problem 7}
+Provide all poles and calculate all residues for:
+\begin{align*}
+    f(z) = \frac{e^{iz}}{(z^2 + 1)(z+2)^2}.
+\end{align*}It may be useful to remember:
+\begin{align*}
+    f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint \frac{f(z)}{(z -z_0)^{n+1}}dz.
+\end{align*}
+
+\subsubsection*{Solution}
+
+\subsection*{Problem 8}
+Calculate the Fourier transform of the triangle pulse:
+\begin{align*}
+    f(t) = \begin{cases}
+        1-t; \quad t \in [0, 1]\\
+        1 + t; \quad t \in [-1, 0)
+    \end{cases}
+\end{align*}
+
+\subsubsection*{Solution}
+
+\subsection*{Problem 9}
+The beta function is defined as:
+\begin{align*}
+    \beta(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x +y)}.
+\end{align*}Compute $\beta(3,4)$.
+
+\subsubsection*{Solution}
+
+\subsection*{Problem 10}
+Use the Method of Characteristics to solve:
+\begin{align*}
+    xu_x + yu_y = 2x
+\end{align*}with the boundary conditions: $u(x,x^2) = x$.
+
+\subsubsection*{Solution}

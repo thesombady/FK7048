@@ -21,18 +21,18 @@
 \contentsline {section}{\numberline {5}Complex Analysis}{15}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Residue}{16}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Contour Integral tricks}{17}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Moreras Theorem}{17}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Branch cut}{17}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.3}Moreras Theorem}{18}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Branch cut}{18}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}Cauchys principal value}{19}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Meromorphic functions \& Winding numbers}{19}{subsection.5.6}%
-\contentsline {section}{\numberline {6}Bessel functions}{20}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Legendre's polynomials}{21}{subsection.6.1}%
+\contentsline {subsection}{\numberline {5.6}Meromorphic functions \& Winding numbers}{20}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Bessel functions}{21}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Legendre's polynomials}{22}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Generating functions}{22}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Other special functions}{22}{subsection.6.3}%
 \contentsline {section}{\numberline {7}Transforms}{23}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Fourier Transform}{23}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Laplace Transform}{24}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Usefull identifies}{24}{section.8}%
-\contentsline {section}{\numberline {9}Practice Exam}{26}{section.9}%
-\contentsline {section}{\numberline {10}Previous exam 2021}{34}{section.10}%
-\contentsline {section}{\numberline {11}Previous exam 2022}{41}{section.11}%
+\contentsline {section}{\numberline {8}Usefull identifies}{25}{section.8}%
+\contentsline {section}{\numberline {9}Practice Exam}{27}{section.9}%
+\contentsline {section}{\numberline {10}Previous exam 2021}{35}{section.10}%
+\contentsline {section}{\numberline {11}Previous exam 2022}{42}{section.11}%

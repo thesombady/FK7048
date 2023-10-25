@@ -383,7 +383,7 @@ The Hessian of a system:
 Green's function are a way to solve ordinary differnetial equations, and can be used to solve partial differnetial equations however that is not covered in this course. These functions are defined as the solution to the following equation:
 \begin{align}
     &\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + q(x)y(x) = f(x),\label{eq: greens-function}\\
-    &\mathcal{L}G(x,x') = \delta(x - x')\nonumber,
+    &\mathcal{L}G(x,s) = \delta(x - s)\nonumber,
 \end{align}where $\mathcal{L}$ is a linear operator defined by the problem at hand. One solves the two set of equations:
 \begin{align*}
     \text{Continuity condition: }&\G_1(s,s) = \G_2(s,s)\\
@@ -493,6 +493,17 @@ Suppose one has a funciton $f$ which is analytic expect at a point $z_0$, and on
     \implies& f(z) = \sin^2(z)\\
     \implies& \oint_\Gamma \frac{\sin^2(z)}{(z-a)^4}dz = \frac{2\pi i}{3!}f^{(3)}(z = a)
 \end{align*}
+\subsubsection*{Example}
+Suppose the following integral:
+\begin{align*}
+    \int_0^\infty \frac{dx}{x^3 x+ 1}dx.
+\end{align*}Suppose one solves this by construcing a path-integral from $(0,0)\times(R,0)\times(re^{2i\theta/3})$ which is closed $(\Gamma)$, then $z^3 = r^3e^{i\theta3}$.
+Using this one has the following:
+\begin{align*}
+    \oint_\Gamma\frac{1}{z^3 + 1}dz &= \lim_{R\to\infty}\int_0^{R}\frac{1}{x^3 + 1}dx + \int_{arc} + \int_{R}^0\frac{e^{2i\pi/3}}{z^3e^{2i\pi}}\\
+    &= (1-e^{i2\pi/3})\int_0^\infty \frac{dx}{x^3 + 1} = 2\pi i\sum_{i}\res{f}{z_i}\\
+    &= \frac{2\pi}{3\sqrt{3}}
+\end{align*}
 
 \subsection{Moreras Theorem}
 Moreras theorem is equvilent to the fundamental theorem of calculus, but in the complex plane. It states the following: {\color{blue} If there exists a contionous function $f(z)$ on a simply connected in some region $\Gamma$, then}:
@@ -558,7 +569,7 @@ A function $f(z)$ is said to meromorphic at any point $z_0$ forall $z$ in the cl
     f(z) =  \sum_{n = -N}^\infty a_n(z-z_0)^n.
 \end{align*}This result is used in the \textbf{Mittag-Leffler theorem}. The theorem states: Assuming a function $f$ which is analaytic around the origin and only has countable singularities, $N$ in total, which are simple poles at $z_i$ with residues $a_i$, then the function $f$ can be written as the following:
 \begin{align*}
-    \colorboxed{red}{f(z) = f(0) + \sum_{i = 1}^Nb_i \left(\frac{z_i}{z - z_i} + \frac{1}{z_i}\right)}.
+    \colorboxed{red}{f(z) = f(0) + \sum_{i = 1}^Na_i \left(\frac{z_i}{z - z_i} + \frac{1}{z_i}\right)}.
 \end{align*}For this to hold the function $f$ has to be bounded, that is $f(z)\leq M$ for a constant $M$ in the contour that encompases all singularities. 
 
 \vspace*{0.5cm}\noindent
@@ -625,6 +636,7 @@ There exists other special functions, such as the Hermite polynomials, the Lague
 \end{center}
 \begin{align*}
     \Gamma(z) &= \int_0^\infty t^{z - 1}e^{-t}dt,\\
+    &=\lim_{n\to\infty}\frac{n!n^z}{z(z+1)(z+2)\cdots (z+n)}\\
     \Gamma(z)&= (z - 1)!\text{ if }z\in\mathbb{N}\\
     \text{Identity: }& \Gamma(z + 1) = z\Gamma(z),\\
     \text{Reflection: }& \Gamma(z + 1)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)},\\
@@ -702,6 +714,10 @@ Common expansions, centered around zero:
     &\colorboxed{blue}{\tan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)}}\\
     &\colorboxed{blue}{\cosh(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n}}{(2n)!}}\\
     &\colorboxed{blue}{\tanh^{-1}(x) = x + \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n + 1}}{(2n + 1)!}}\\
+\end{align*}
+\begin{align*}
+    &\colorboxed{red}{\int g'(x)\cdot h(x) dx = \left[g(x)\cdot h(x)\right] - \int g(x)\cdot h'(x)dx}\\
+    &\colorboxed{blue}{\int_0^\infty t^ne^{-st}dt = \frac{\Gamma(n+1)}{s^{n+1}}}
 \end{align*}
 \newpage
 \input{exam.tex}

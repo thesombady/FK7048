@@ -219,8 +219,9 @@ Suppose that one finds one of the solutions to a problem, such that $y(x) = y_1(
         y_1 & y_2\\
         y_1' & y_2'
     \end{vmatrix} = y_1y_2' - y_2y_1'.
-\end{align*}If the Wronskian is zero, then the two solutions are linearly dependent, and one can't use Abel's theorem to find the second solution.
-\subsubsection{Variation of parameters}
+\end{align*}If the Wronskian is zero, then the two solutions are linearly dependent (this is actually not always the case but for the scope of this course this assumption can be made), and one can't use Abel's theorem to find the second solution.
+However, if the wronskien is nonzero, one can find an additional solution via Abels' theorem and variation of parameters, sec \ref{sec: Variation of parameter}.
+\subsubsection{Variation of parameters} \label{sec: Variation of parameter}
 Suppose we have the following:
 \begin{align*}
     y''(x) + p(x)y'(x) + q(x)y(x) = F(x).
@@ -229,10 +230,21 @@ Suppose we have the following:
     y_p(x) = A_1(x)y_1(x) + A_2(x)y_2(x),
 \end{align*}where $y_i(x)$ are the solutions to the homogneous problem, and $A_i(x)$ are unknown functions. These functions can be found via the following:
 \begin{align*}
-    &A_1'(x)y_1'(x) + A_2'(x)y_2'(x) = F(x),\\
     \implies& \colorboxed{red}{A_1(x) = \int -\frac{1}{W(y_1,y_2)}y_2(x)F(x)dx},\\
     \implies& \colorboxed{red}{A_2(x) = \int \frac{1}{W(y_1,y_2)}y_1(x)F(x)dx},\\
-\end{align*}where $W$ is the Wronskian.
+\end{align*}where $W$ is the Wronskian. This is often used to generate the particular solution for more problematic source-functions; the general solution is outlined in the example below:
+\begin{align*}
+    &y'' - y = \frac{x}{e^x}\\
+    &y_h(x) = c_1 e^{x} + c_2 e^{-x}\\
+    W(e^{x}, e^{-x}) &= e^{x}\cdot{-e^{-x}} - e^{-x}\cdot{e^{x}} = -2\neq 0\\
+    &y_p(x) = A_1(x)e^{x} + A_2(x)e^{-x}\\
+    A_1(x) &=\int\frac{e^{-x}}{2}\cdot \frac{x}{e^x}dx = \frac{1}{2}\int e^{-2x}xdx\\
+    &= \frac{1}{2}\left(-\frac{1}{4}e^{-2x}(2x + 1)\right)\\
+    A_2(x) &=-\int\frac{e^{x}}{2}\cdot \frac{x}{e^x}dx=- \frac{1}{2}\int x dx\\
+    &= -\frac{1}{2}\frac{x^2}{2}\\
+    y(x) = y_h(x) + y_p(x) &= c_1 y_1(x) + c_2y_2(x) + A_1(x)y_1(x) + A_2(x)y_2(x)\\
+\end{align*}
+
 \section{Storm-Louiville equation}
 Suppose an ODE on the following form:
 \begin{align}
@@ -243,7 +255,8 @@ Suppose an ODE on the following form:
 \end{align*}where $y_i(x)$ are the eigenfunctions of the problem. When doing SL problems, one finds that the solutions are eigenfunctions. Moreover, if $\lambda$ in eq \eqref{eq: SL} is equal to zero, then the problem becomes self-adjoint.
 That is the following:
 \begin{align}
-    \colorboxed{red}{\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + q(x)y = 0,}\label{eq: self-adjoint SL}
+    \colorboxed{red}{\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + q(x)y = 0,}\label{eq: self-adjoint SL}\\
+    \colorboxed{red}{p(x)y'' + p'(x) y'(x) + q(x)y = 0,}\nonumber
 \end{align}
 \subsection{Bondary conditions}
 There exists a few classifications on boundary conditions:
@@ -373,22 +386,77 @@ Green's function are a way to solve ordinary differnetial equations, and can be 
     &\mathcal{L}G(x,x') = \delta(x - x')\nonumber,
 \end{align}where $\mathcal{L}$ is a linear operator defined by the problem at hand. One solves the two set of equations:
 \begin{align*}
-    &\G_1(s,s) = \G_2(s,s), \text{ Continuity condition}\\
-    &\frac{d\G_2}{dx}(x,s)\Bigg|_{x = s} - \frac{d\G}{dx}(xs)\Bigg|_{x = s} = \frac{1}{p(x)}.\text{ Discontinuity condition}
+    \text{Continuity condition: }&\G_1(s,s) = \G_2(s,s)\\
+    \text{Discontinuity condition: }\frac{d\G_2}{dx}(x,s)&\Bigg|_{x = s} - \frac{d\G}{dx}(x,s)\Bigg|_{x = s} = \frac{1}{p(x)}.
 \end{align*}Green's functions are used to solve inhomogenous differential equations on the form \eqref{eq: greens-function}. And the solution is given in totalt to be:
 \begin{align*}
-    &\colorboxed{red}{y(x) = \int_0^x \G_1(x,s)f(s)ds + \int_{x}^L\G_2(x,s)f(s)ds},\\
+    &\colorboxed{red}{y(x) = \int_0^x \G_1^*(x,s)f(s)ds + \int_{x}^L\G_2^*(x,s)f(s)ds},\\
     &\colorboxed{red}{\G(x,s) = \begin{cases}
-        \G_1(x,s), & 0\leq s\leq x,\\
-        \G_2(x,s), & x\leq L.
+        \G_1(x,s), & 0\in[0,s)\\
+        \G_2(x,s), & x\geq s.
     \end{cases}}
-\end{align*}\textbf{Are they swapped?}
+\end{align*}\note in this case the complex conjugation yields: $\G^*(x,s)= \G(s,x)$, i.e. that one switched the integration boundary or the terms in the expression.
+\subsubsection*{Example}
+Suppose the following problem:
+\begin{align*}
+    &-y''(x) = \sin(\pi x);\quad y(0)=y(1) = 0.
+\end{align*}The homogenous solution is given by $y = ax + b$, so that is the Green's function. Dividing the Green's function into two regions, one finds two coefficients using the boundary conditions:
+\begin{align*}
+    &\G_1(0,s) = b_1 = 0\implies \G_1(x,s) = a_1x\\
+    &\G(1,s) = a_2 + b_2 = 0\implies \G_2(x,s) = a_2(1-x)
+\end{align*}Using the continuity and discontinuity conditions:
+\begin{align*}
+    \text{Continuity: }&a_1s = a_2(1-s)\\
+    \text{Discontinuity: }& -a_2 - a_1 = -1\\
+    \implies a_1=1 - a_2 &\quad \&\quad  a_1s = (1- a_1)(1-s)\\
+    a_1 = 1 - s&\quad\&\quad a_2 = s\\
+    \implies \G(x,s) &= \begin{cases}
+        (1-s)x;\quad x\in[0, s)\\
+        s(1-x);\quad x\in[s,1]
+    \end{cases}
+\end{align*}Putting this into the integral from above, one has the following:
+\begin{align*}
+    y(x) &= \int_0^x \G_1^*(x,s)f(s)ds + \int_{x}^L\G_2^*(x,s)f(s)ds\\
+    &= \int_{0}^x(1-x)s \sin(\pi s)ds + \int_{x}^1x(1-s)\sin(\pi s)ds\\
+    &= (1-x)\int_{0}^xs \sin(\pi s)ds + x\int_{x}^1(1-s)\sin(\pi s)ds\\
+    &= \frac{\sin(\pi x)}{\pi^2}
+\end{align*}\note in this example, since the problem is in SL form, the symmetri behind $\G_1$ and $\G_2$ yields $\G_1^*(x,s) = \G_2(x,s)$.
+\subsubsection*{Example}
+Suppos the following problem:
+\begin{align*}
+    y'' + y = f(t); \quad y(0) = y'(0) = 0.
+\end{align*}Again, as prior, find the general formula for the homogenous solution:
+\begin{align*}
+    y'' + y = 0\implies y = a\cos(x) + b\sin(x).
+\end{align*}Applying the boundary conditions: which only affect the first region of the Green's function:
+\begin{align*}
+    \G_1(0,s) &= a_1\cos(x) + b_1\sin(x) = 0\implies a_1 = 0\\
+    \G_1'(0,s) &= b_1\cos(0) = 0\implies b_1 = 0\\
+    \implies \G(x,s) &= \begin{cases}
+        0;& x\in[0,s)\\
+        a_2\cos(x) + b_2\sin(x);& x\in[s,L]
+    \end{cases}
+\end{align*}Appying the two conditions one has:
+\begin{align*}
+    &0 = a_2\cos(s) + b_2\sin(s)\\
+    &-a_2\sin(s) + b_2\cos(s) = 1\\
+    \implies \G_2(x,s) &= -\sin(s)\cos(x) + \cos(s)\sin(x) = \sin(x - s)
+\end{align*}The final step is to solve the integral:
+\begin{align*}
+    y(x) = \int_0^\infty \G^*(x,s)f(s)ds = \int_x^\infty \G_2^*(x,s)f(s)ds = \int_0^x \sin(x-s)f(s)ds
+\end{align*}\note the boundary change as discussed above with the change of integration.
 
 \section{Complex Analysis}
 A complex number $z$ can be defined as $z = a + bi$ or $z(x,y) = u(x,y) + i (v,y)$. In doing so, one finds that the differentiability of such a function $z$ would be the following:
 \begin{align}
     \colorboxed{red}{\frac{\partial u }{\partial x} = \frac{\partial v}{\partial y}\quad \&\quad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x},}\label{eq: Cauchy-Riemann eq}
-\end{align}which is also known as the Cauchy-Riemann equations. The laplacian $\nabla^2$ in the complex space is a bit more tricky and is defined by:
+\end{align}which is also known as the Cauchy-Riemann equations. Furthermore, if a function $f(z)$ can be written on the following form, the derivatives hold:
+\begin{align*}
+    f(z) &= u(x,y) + iv(x,y),\\
+    \frac{df}{dz} &= \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}\\
+    &= \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}.
+\end{align*}\note it might be more usefull to write the function $f(z)$ on euler-from, where $r = \sqrt{u(x,y)^2 + v(x,y)^2}$ and $\theta = \arctan\left(\frac{v(x,y)}{u(x,y)}\right)$; such that $f(z) = re^{i\theta}$.
+The laplacian $\nabla^2$ in the complex space is a bit more tricky and is defined by:
 \begin{align*}
     \colorboxed{red}{\frac{\partial^2 u }{\partial x^2} + \frac{\partial u}{\partial v^2} = \frac{\partial^2 v}{\partial y\partial x} - \frac{\partial^2v}{\partial x\partial y} = 0.}
 \end{align*}

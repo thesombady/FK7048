@@ -62,15 +62,12 @@ Write down one equation that fulfills the following definitions. You do not need
 
 \subsubsection*{Solution}
 \begin{enumerate}
-    \item An ODE that is in Sturm-Liouville form. Explain why it is in Sturm Liouville form:
-    \item A 2nd order PDE that could be solved using the Method of Characteristics:
-    \item An ODE that is inhomogeneous:
-    \item A contour integral that has a pole, but would evaluate to 0. Specify both the integral and the contour that you chose:
-    \item A complex function that is continuous but nowhere differentiable:
+    \item An ODE that is in Sturm-Liouville form. Explain why it is in Sturm Liouville form: The equation: $$y'' + y = 0$$ is in Sturm-Liouville form, since it can be written as: $$\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + q(x)y = 0,$$ where both $p(x) = q(x) = 1$.
+    \item A 2nd order PDE that could be solved using the Method of Characteristics: $$xu_{xx} + yu_{yy} = 1.$$
+    \item An ODE that is inhomogeneous: $y'' + y = x$ is inhomogeneous due to the $x$ term.
+    \item A contour integral that has a pole, but would evaluate to 0. Specify both the integral and the contour that you chose: Suppose the function $f(z) = \sin(z)\cdot z^{-1}$, which has a single pole at $z = 0$ but the closed contour integarl, along a unit circle, of the function is 0.
+    \item A complex function that is continuous but nowhere differentiable: the function $f(z) = \bar{z}$ is continous everywhere, but nowhere differentiable due to the restriction given by the Cauchy-Riemann equations, eq \eqref{eq: Cauchy-Riemann eq}.
 \end{enumerate}
-\begin{center}
-    Huuh?
-\end{center}
 \subsection*{Problem 4}
 Solve the differential equation using the Method of Frobenius:
 \begin{align*}
@@ -95,7 +92,7 @@ Solve:
 \subsubsection*{Solution}
 \begin{align*}
     \int_{-\infty}^{\infty}f(x)\delta(x - x_0)dx &= f(x_0)\\
-    \implies \int_{1}^{\infty}\frac{\sin(x)}{x^2 + 3}\delta(x - 4)dx &= \frac{\sin(4)}{19}\\
+    \implies \int_{1}^{\infty}\frac{\sin(x)}{x^2 + 3}\delta(x - 4)dx &= \frac{\sin(4)}{19}
 \end{align*}
 
 \subsection*{Problem 6}
@@ -105,6 +102,10 @@ Solve the integral:
 \end{align*}
 
 \subsubsection*{Solution}
+Taking the contour from $0$ to $R$ with a semicircle to $-R$ and then back to $0$:
+\begin{align*}
+    \oint_\Gamma \frac{1}{z^2 + 1}dz = \oint_\Gamma\frac{1}{(z + i)(z-i)}dz = 2\pi i\cdot\frac{1}{2i} = \pi
+\end{align*}
 
 \subsection*{Problem 7}
 Calculate the Fourier transform of the following function:
@@ -117,6 +118,11 @@ Calculate the Fourier transform of the following function:
 \end{align*}
 
 \subsubsection*{Solution}
+Using the definition comprised in the recap notes one has the following:
+\begin{align*}
+    \tilde{f}(\w) &= \intinf f(t)e^{-i\w t}dt = \int_{-T}^0 e^{-i\w t}dt - \int_0^Te^{-i\w t}dt\\
+    &=\int_{-T}^0 e^{i\w t} + e^{-i\w t}dt =2\int_{-T}^0\cos(\w t)dt = 2\Bigg[\frac{\sin(\w t)}{\w}\Bigg]_{-T}^{0}=\frac{2}{\w}\left(1 - \sin(\w T)\right)
+\end{align*}
 
 \subsection*{Problem 8}
 Two important relations for the Bessel function are:
@@ -129,6 +135,14 @@ Two important relations for the Bessel function are:
 \end{align*}
 
 \subsubsection*{Solution}
+In order to show the above relationship one does the following:
+\begin{align*}
+    \frac{2n}{x}J_n(x) - 2J_n'(x) &= J_{n-1}(x) + J_{n+1}(x) -\left(J_{n-1}(x) - J_{n+1}(x)\right)= 2J_{n+1}(x)\\
+    \implies J_n'(x)-\frac{n}{x}J_n(x) &= -J_{n+1}(x)\\
+    x^{-n}\left(J_n'(x) - nx^{-1}J_n(x)\right) &= -x^{-n}J_{n+1}(x)\\
+    x^{-n}J_n'(x) - nx^{-n-1}J_n(x) &= -x^{-n}J_{n+1}(x)\\
+    \frac{d}{dx}\left[x^{-n}J_n(x)\right] &= -x^{-n}J_{n+1}(x)\quad\blacksquare\\
+\end{align*}
 
 \subsection*{Problem 9}
 A particle is defined in a 3D rectangular box, of lengths $a \times b \times c$. The potential of the particle is 0 inside the box, but is infinite outside the box.
@@ -138,3 +152,32 @@ Using Schrödingers's equation in steady state:
 \end{align*}what is the lowest energy state that this particle can have?
 
 \subsubsection*{Solution}
+Suppos the following:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+       \draw[dashed] (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0); 
+       \draw[dashed, thin] (0,0) -- (2,1);
+       \draw[dashed, thin] (0,2) -- (2,3);
+       \draw[dashed, thin] (2,2) -- (4,3);
+       \draw[dashed, thin] (2,0) -- (4,1);
+       \draw[dashed, thin] (2,3) -- (4,3) -- (4,1);
+       \node[below] at (1,0) {$a$};
+       \node[right] at (2,1.0) {$b$};
+       \node[right] at (3,0.2) {$c$};
+       \draw[->] (0,0) -- (3,0) node[below] {$x$};
+       \draw[->] (0,0) -- (0,3) node[left] {$y$};
+       \draw[->] (0,0) -- (3,1.5) node[below] {$z$};
+    \end{tikzpicture}
+    \caption{Overview}
+    \label{fig:2022_9}
+\end{figure}\noindent
+The wavefunction is seperable by nature, so one can write the following, with the natural boundary conditions:
+\begin{align*}
+    \psi_{n,m,l}(x,y,z) = c\sin\left(\frac{n\pi}{a}x\right)\sin\left(\frac{m\pi}{b}y\right)\sin\left(\frac{l\pi}{c}z\right)
+\end{align*}
+\vspace*{3cm}
+\begin{center}
+    \color{red}
+    \boxed{\color{black}\text{This summerizes both the previous exam and the compendium}}
+\end{center}

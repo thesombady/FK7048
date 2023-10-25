@@ -41,6 +41,7 @@
 \newcommand{\res}[2]{\text{Res}(#1,#2)}
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\note}{\textit{Note: }}
+\newcommand{\intinf}{\int_{-\infty}^\infty}
 \newcommand*{\colorboxed}{}
 \def\colorboxed#1#{%
   \colorboxedAux{#1}%
@@ -385,9 +386,9 @@ Green's function are a way to solve ordinary differnetial equations, and can be 
 
 \section{Complex Analysis}
 A complex number $z$ can be defined as $z = a + bi$ or $z(x,y) = u(x,y) + i (v,y)$. In doing so, one finds that the differentiability of such a function $z$ would be the following:
-\begin{align*}
-    \colorboxed{red}{\frac{\partial u }{\partial x} = \frac{\partial v}{\partial y}\quad \&\quad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x},}
-\end{align*}which is also known as the Cauchy-Riemann equations. The laplacian $\nabla^2$ in the complex space is a bit more tricky and is defined by:
+\begin{align}
+    \colorboxed{red}{\frac{\partial u }{\partial x} = \frac{\partial v}{\partial y}\quad \&\quad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x},}\label{eq: Cauchy-Riemann eq}
+\end{align}which is also known as the Cauchy-Riemann equations. The laplacian $\nabla^2$ in the complex space is a bit more tricky and is defined by:
 \begin{align*}
     \colorboxed{red}{\frac{\partial^2 u }{\partial x^2} + \frac{\partial u}{\partial v^2} = \frac{\partial^2 v}{\partial y\partial x} - \frac{\partial^2v}{\partial x\partial y} = 0.}
 \end{align*}
@@ -588,7 +589,7 @@ The Fourier transform is defined as the operator $\mathcal{L}$ operating on a fu
     \text{1: }& \frac{df}{dx} \implies iw\tilde{f}(\w),\label{eq: Fourier derivative}\\
     \text{2: }& \frac{d^n f}{dx^n} \implies (iw)^n\tilde{f}(\w),\nonumber\\
     \text{3: }& (f \otimes g)(t) \implies \tilde{f}\cdot\tilde{g},\nonumber\\
-    \text{4: }& f(at) \implies \frac{1}{|a|}\tilde{f}\left(\frac{\w}{a}\right),\nonumber\\
+    \text{4: }& f(at) \implies \frac{1}{|a|}\tilde{f}\left(\frac{\w}{a}\right),\nonumber
 \end{align}An example of the Fourier transform is the $\chi$ function:
 \begin{align*}
     \chi(-1,1) &= \begin{cases}
@@ -617,6 +618,22 @@ Another transform is the Laplace transform, $\hat{f}(s) = \mathcal{L}(f(t))(s)$,
     &\colorboxed{red}{\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}}\\
     &\colorboxed{blue}{n! = \frac{(2n)!!}{2^n}}\\
     &\text{Euler-Mascheroni constant: }\gamma = 0.5772...\\
+\end{align*}
+The fourier transform of a gaussian is another gaussian, proved via completion of squares;
+\begin{align*}
+    &\colorboxed{red}{f(x) = e^{at^2}}\\
+    &\colorboxed{red}{\tilde{f}(\w) = \sqrt{\frac{2}{a}}\exp\left[-\frac{\w^2}{4a}\right]}
+\end{align*}
+Common expansions, centered around zero:
+
+\begin{align*}
+    &\colorboxed{red}{\text{Taylor expansion} f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n}\\
+    &\colorboxed{blue}{\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - ... = \sum_{n = 0}^\infty \frac{(-1)^n}{(2n + 1)!}x^{2n + 1}}\\
+    &\colorboxed{blue}{\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - ... = \sum_{n = 0}^\infty \frac{(-1)^n}{(2n)!}x^{2n}}\\
+    &\colorboxed{blue}{e^x = 1 + x + \frac{x^2}{2!} + ... = \sum_{n = 0}^\infty \frac{x^n}{n!}}\\
+    &\colorboxed{blue}{\tan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)}}\\
+    &\colorboxed{blue}{\cosh(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n}}{(2n)!}}\\
+    &\colorboxed{blue}{\tanh^{-1}(x) = x + \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n + 1}}{(2n + 1)!}}\\
 \end{align*}
 \newpage
 \input{exam.tex}

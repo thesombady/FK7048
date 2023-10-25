@@ -33,6 +33,6 @@
 \contentsline {subsection}{\numberline {7.1}Fourier Transform}{21}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Laplace Transform}{22}{subsection.7.2}%
 \contentsline {section}{\numberline {8}Usefull identifies}{22}{section.8}%
-\contentsline {section}{\numberline {9}Practice Exam}{23}{section.9}%
-\contentsline {section}{\numberline {10}Previous exam 2021}{31}{section.10}%
-\contentsline {section}{\numberline {11}Previous exam 2022}{38}{section.11}%
+\contentsline {section}{\numberline {9}Practice Exam}{24}{section.9}%
+\contentsline {section}{\numberline {10}Previous exam 2021}{32}{section.10}%
+\contentsline {section}{\numberline {11}Previous exam 2022}{39}{section.11}%

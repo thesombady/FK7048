@@ -40,7 +40,7 @@ Explain/Sketch-out (in a few equations and sentences) the following methods for 
 
 \subsubsection*{Solution}
 \begin{enumerate}
-    \item \textbf{Seperation of variables}: is a method of solving a PDE by taking it into an ODE form; by the ansatz $u(x,y) = X(x)Y(y)$.
+    \item \textbf{Seperation of variables}: Assuming a form $\frac{dy}{dx} = \frac{p(x,y)}{q(x,y)}$ where one only depends on one variable, then moving to either side and integrate.  
     \item \textbf{Exact differential equations}: Is a first order ODE where $\frac{dy}{dx} = f(x,y) = \frac{g(x,y)}{h(x,y)}$. In exact differential equations, neither $g$ nor $h$ can be written as a function of only one variable and thus one has to construct the following $\psi_y = g$ and $\psi_x = h$ and then solve the ODE $\frac{d\psi}{dx} = h$.
     \item \textbf{Homogeneous ODEs}: This type of ODE does not refer to the source-function being $0$ but rather the type of ODE where the function can be written on the followig form $f(kx,ky)=k^nf(x,y)$. Solving such a system one makes a variable substitution and solves the system with the transformed variables.
     \item \textbf{Linear ODEs}: This type of ODE has the following form: $y' + p(x)y = q(x)$, where $p(x)$ and $q(x)$ are functions of $x$. This type of ODE can be solved by the method of integrating factors, where one multiplies the ODE by the integrating factor $\alpha(x) = e^{\int p(x)dx}$.
@@ -98,36 +98,36 @@ Being by stating that we have the following form:
     \G_1(s,s) &= \G_2(s,s)\implies A_1s = B_2\\
     G_2'(s,s) - G_1'(s,s) &= 0 - A_1 = 1 \implies A_1 = -1\\
     \implies \G(x,s) &= \begin{cases}
-        -x; \quad x \in[0,s]\\
-        -s; \quad x \in[0,L]
+        -x; \quad x \in[0,s)\\
+        -s; \quad x \in[s,L]
     \end{cases}
 \end{align*}Thus, the solution is given by:
 \begin{align*}
     y(x) &= \int_0^x -x \cdot (s^2 + 4)ds + \int_x^L -s \cdot (s^2 + 4)ds\\
     &= -x\left[\frac{s^3}{3}+4s\right]_{s = 0}^x - \left[\frac{s^4}{4} + 2s^2\right]_{s=x}^L\\
     &= -x\left[\frac{x^3}{3} + 4x\right] - \left[\frac{L^4}{4} + 2L^2\right] + \left[\frac{x^4}{4} + 2x^2\right]\\
-\end{align*}
+\end{align*}The integration boundaries should be switched in the two integrals above.
 
 \subsection*{Problem 6)}
 Calculate the contour integral:
 \begin{align*}
-    \oint_\Gamma \frac{4z}{z^2(z + 1)}dz
+    \oint_\Gamma \frac{4z}{z^2(z + 1)^2}dz
 \end{align*}where $\Gamma$ is a circle of radius $3$.
 
 \subsubsection*{Solution}
 Rewriting the integral:
 \begin{align*}
-    \oint_\Gamma\frac{4}{z(z + 1)}dz = \oint_\Gamma\frac{4}{z^2 + z}dz.
+    \oint_\Gamma\frac{4z}{z^2(z + 1)^2}dz = \oint_\Gamma\frac{4}{z(z+1)^2}dz.
 \end{align*}Finding the roots of the denominator:
 \begin{align*}
-    z^2 + z = 0 \implies z(z + 1) = 0 \implies z = 0, -1.
-\end{align*}where both roots are contained within the contour and are simple poles. The residues can be computed in accordance to eq \eqref{eq:res1} and gives:
+    z(z + 1)^2 = 0 \implies z = 0, -1.
+\end{align*}where both roots are contained within the contour and $0$ is a simple pole and $-1$ is a double pole. The residues can be computed in accordance to eq \eqref{eq:res1} and \eqref{eq:res2} and yields:
 \begin{align*}
-    \res{f}{0} &= \lim_{z\to0}\frac{z4}{z(z-1)} = \frac{4}{-1} = -4\\
-    \res{f}{-1} &=\lim_{z\to -1} (z + 1)\frac{4}{z(z+1)} = -4
+    \res{f}{0} &= \lim_{z\to0}\frac{z4}{z(z-1)^2} = \frac{4}{1} = 4\\
+    \res{f}{-1} &=\lim_{z\to -1} \frac{d}{dz}(z + 1)^2\frac{4}{z(z+1)^2} = \lim_{z\to-1}-\frac{4}{z^2}= -4
 \end{align*}Using the theroem of residues gives:
 \begin{align*}
-    \oint_\Gamma\frac{4z}{z^2(z+1)}dz = 2\pi i\left(\res{f}{0} + \res{f}{-1}\right) = 2\pi i(-4 - 4) = -16\pi i
+    \oint_\Gamma\frac{4z}{z^2(z+1)}dz = 2\pi i\left(\res{f}{0} + \res{f}{-1}\right) = 2\pi i(4 - 4) = 0
 \end{align*}
 
 \subsection*{Problem 7)}

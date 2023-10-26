@@ -187,7 +187,7 @@ Linear ODE's have the following form:
 
 \subsection{Solving higer order ODE's}
 Higher ODE's can be harder to solve, but a good way to start is by making the ansats $y(x)=e^{rx}$ and find the roots of the characteristic equation; this is only possible when the ODE has constant coefficients, i.e.
-that the constants infront of the terms is indenpendent of $x$. If the root are real and distinct, then the solution is given by, for a second order problem:
+that the constants infront of the terms is indenpendent of $x$. If the root are real and distinct, then the solution is given by, for a second order problem: In this instance it doesn't matter if the roots are real, plugging them back into the problem will yield a cosinus and sinus expansion.
 \begin{align*}
     y(x) = Ae^{r_1x} + Be^{r_2x}.
 \end{align*}However, if the roots are the same, we instead get:
@@ -197,7 +197,7 @@ that the constants infront of the terms is indenpendent of $x$. If the root are 
 From here it's important to note that there exists something called singularity points; where the functions $p(x)$ and/or $q(x)$ diverges.
 \begin{itemize}
     \item \textbf{Regular singular points}: where $p(x)$ and $q(x)$ approaches $\infty$, but where $(x-x_0)p(x)$ and $(x-x_0)^2q(x)$ don't.
-    \item \textbf{Regular singular points}: where $p(x)$ and $q(x)$ approaches $\infty$, but where $(x-x_0)p(x)$ and $(x-x_0)^2q(x)$ also does.
+    \item \textbf{Irregular singular points}: where $p(x)$ and $q(x)$ approaches $\infty$, but where $(x-x_0)p(x)$ and $(x-x_0)^2q(x)$ also does.
 \end{itemize}
 
 \subsection{Power series solutions}
@@ -207,7 +207,7 @@ There exists two methods of solving via a power-series ansats, either the power-
     \text{Power series: }&\colorboxed{red}{y(x) = \sum_{n = 0}^\infty a_n x^{n}}.\label{eq: Power series ansats}
 \end{align}The method of this is to differentiate the expressions twice, reindex to find write everything on same exponent, and then find the recursion relation. In doing so,
 one can compare them to Taylor-expansions and find the corresponding functions. In the case of the Frobenius ansats, one has to find the indicial equation, is the $n = 0$ term of the expansion: the roots of the 
-indicial equation, which are used to substitute the unknown $r$ in the series-expansion.
+indicial equation, which are used to substitute the unknown $r$ in the series-expansion. Frobenius method can only be applied to regular singular points whilst the power series ansats can be applied to both regular and irregular singular points.
 \subsection{Finding additional solutions}
 Suppose that one finds one of the solutions to a problem, such that $y(x) = y_1(x) + y_2(x)$, then one can use Abel's theorem to find the second solution:
 \begin{align*}
@@ -295,13 +295,14 @@ The Laplace-equation, eq \eqref{eq: Laplace-equation} is defined below and is an
     \item \textbf{Laplace-equation}: \begin{align}
     \Delta f(x,y,z) = \nabla^2 f(x,y,z) = 0.\label{eq: Laplace-equation}
 \end{align}This is obviously a second order PDE, but since $B = 0$ given the general case eq \eqref{eq: general PDE of second order} it's an elliptic equaption.
-    \item \textbf{Poission-equation}: \begin{align}\Delta f(x,y,z) = \nabla^2 f(x,y,z) = -\frac{\rho}{\epsilon_0}.\label{eq: Poission-equation}\end{align}This is also an elliptic PDE.
-    \item \textbf{Heat-equation}: \begin{align*}\nabla^2f = \frac{1}{a^2}\frac{\partial f}{\partial t}\end{align*}This is also an elliptic PDE.
+    \item \textbf{Poission-equation}: \begin{align}f(x,y,z) = \nabla^2 u(x,y,z)\label{eq: Poission-equation}\end{align}This is also an elliptic PDE.
+    \item \textbf{Heat-equation}: \begin{align*}\nabla^2f = \frac{1}{a}\frac{\partial f}{\partial t}\end{align*}This is also an elliptic PDE.
     \item \textbf{Wave-equation}:\begin{align*}
     \nabla^2f = \frac{1}{c^2}\frac{\partial^2 f}{\partial t^2}
 \end{align*}This is also an elliptic PDE.
     \item \textbf{Schrödingers-equation}:\begin{align*}
-    -\frac{1}{\hbar m}\nabla^2 \psi+ V\psi = i\hbar\frac{\partial \psi}{\partial t}
+    &-\frac{\hbar^2}{2 m}\nabla^2 \psi+ V\psi = i\hbar\frac{\partial \psi}{\partial t}\\
+    &-\frac{\hbar^2}{2 m}\nabla^2 \psi+ V\psi = E\psi
 \end{align*}
     \item \textbf{Klein Gordons-equation}: \begin{align*}
     &\square\psi = -\mu^2\psi\\
@@ -470,7 +471,7 @@ There exists two kinds of singularities: essential-singularities and poles. Esse
 \subsection{Residue}
 The residue is important when computing complex contour integrals:
 \begin{align*}
-    \colorboxed{red}{\oint_{\partial \Gamma} f(z)dz = 2\pi i \sum_{i} \res{f}{z_i},}
+    \colorboxed{red}{\oint_{\Gamma} f(z)dz = 2\pi i \sum_{i} \res{f}{z_i},}
 \end{align*}where $\Gamma$ is the closed contour and $z_i$ are the singularities of the function $f(z)$; note not essential-singularities, but rather poles of different order. There exists three ways to compute the residue of a function $f(z)$: Finding the Laurent series, or the following two methods:
 \begin{align}
     &\colorboxed{red}{\res{f}{z_i} = \lim_{z\to z_i} (z - z_i)f(z),\label{eq:res1}}\\
@@ -481,12 +482,12 @@ Also, if one tries to use eq \eqref{eq:res1} and one gets $\infty$ the reason it
 Suppose one has a funciton $f$ which is analytic expect at a point $z_0$, and one wants to compute the ingral, one can decompose the closed integral to the elements along a certain path $\Gamma$ and the elements around the point $z_0$:
 \begin{align*}
     \oint_{\partial \gamma} f(z)dz &= 2\pi i \res{f}{z_0}\\
-    &=\sum_{i}\int_{\Gamma_i} f(z)dz.
+    &=\sum_{i}\int_{\partial\Gamma_i} f(z)dz.
 \end{align*}Often, the decomposed integrals might be easier to compute than the original integral, or maybe one of the integrals is the one that is wanted. Moreover, Cauchy's integral formula states the following:
 \begin{align*}
     \text{Cauchy's integral formula: }
     &\colorboxed{red}{f(z_0)=\frac{1}{2\pi i}\oint_\Gamma \frac{f(z)}{z - z_0}dz },\\
-    &\colorboxed{blue}{f^{n}(z_0) = \frac{n!}{2\pi i}\oint_{\Gamma} \frac{f(z)}{(z-z_0)^{n+1}}dz}
+    &\colorboxed{blue}{f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_{\Gamma} \frac{f(z)}{(z-z_0)^{n+1}}dz}
 \end{align*}where $z_0$ is a singularity point. An example of the usefullness of this could be the following:
 \begin{align*}
     &\oint_\Gamma \frac{\sin^2(z)}{(z-a)^4}dz\\
@@ -591,7 +592,7 @@ One important property of Bessel functions is that they are orthogonal:
     \int_0^1 xJ_n(\lambda_{n,m}x)J_n(\lambda_{n,l}x)dx = \frac{1}{2}\delta_{m,l},
 \end{align*}moreover, they have the following property, excluding the $n = 0$ case:
 \begin{align*}
-    J_{n+ 1}(x) - J_{n - 1}(x) &= 2J_n'(x),\\
+    J_{n- 1}(x) - J_{n + 1}(x) &= 2J_n'(x),\\
     J_{n + 1}(x) + J_{n - 1}(x) &= \frac{2n}{x}J_n(x).
 \end{align*}
 The moddified Bessel functions are the Bessel-function with imaginary argument, i.e. the moddified Bessel-function of the first kind is defined as the following:
@@ -652,7 +653,7 @@ There exists other special functions, such as the Hermite polynomials, the Lague
     The Di-Gamma function $\psi$.
 \end{center}
 \begin{align*}
-    \colorboxed{red}{\psi(z) =\frac{d}{dz}\left(\ln(z)\right) = \frac{\Gamma'(z)}{\Gamma(z)}}
+    \colorboxed{red}{\psi(z) =\frac{d}{dz}\left(\ln(\Gamma(z))\right) = \frac{\Gamma'(z)}{\Gamma(z)}}
 \end{align*}
 
 \section{Transforms}
@@ -701,7 +702,7 @@ Another transform is the Laplace transform, $\hat{f}(s) = \mathcal{L}(f(t))(s)$,
 \end{align*}
 The fourier transform of a gaussian is another gaussian, proved via completion of squares;
 \begin{align*}
-    &\colorboxed{red}{f(x) = e^{at^2}}\\
+    &\colorboxed{red}{f(t) = e^{at^2}}\\
     &\colorboxed{red}{\tilde{f}(\w) = \sqrt{\frac{2}{a}}\exp\left[-\frac{\w^2}{4a}\right]}
 \end{align*}
 Common expansions, centered around zero:
@@ -712,8 +713,8 @@ Common expansions, centered around zero:
     &\colorboxed{blue}{\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - ... = \sum_{n = 0}^\infty \frac{(-1)^n}{(2n)!}x^{2n}}\\
     &\colorboxed{blue}{e^x = 1 + x + \frac{x^2}{2!} + ... = \sum_{n = 0}^\infty \frac{x^n}{n!}}\\
     &\colorboxed{blue}{\tan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)}}\\
-    &\colorboxed{blue}{\cosh(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n}}{(2n)!}}\\
-    &\colorboxed{blue}{\tanh^{-1}(x) = x + \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}{^\infty} \frac{x^{2n + 1}}{(2n + 1)!}}\\
+    &\colorboxed{blue}{\cosh(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + ... = \sum_{n = 0}^{\infty} \frac{x^{2n}}{(2n)!}}\\
+    &\colorboxed{blue}{\tanh^{-1}(x) = x + \frac{x^3}{3} + \frac{x^5}{5} + ... = \sum_{n = 0}^{\infty} \frac{x^{2n + 1}}{(2n + 1)!}}\\
 \end{align*}
 \begin{align*}
     &\colorboxed{red}{\int g'(x)\cdot h(x) dx = \left[g(x)\cdot h(x)\right] - \int g(x)\cdot h'(x)dx}\\

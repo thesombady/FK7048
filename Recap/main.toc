@@ -8,30 +8,30 @@
 \contentsline {subsection}{\numberline {1.6}Power series solutions}{7}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}Finding additional solutions}{7}{subsection.1.7}%
 \contentsline {subsubsection}{\numberline {1.7.1}Variation of parameters}{8}{subsubsection.1.7.1}%
-\contentsline {section}{\numberline {2}Storm-Louiville equation}{8}{section.2}%
+\contentsline {section}{\numberline {2}Storm-Louiville equation}{9}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Bondary conditions}{9}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Converting an ODE into SL form}{9}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Partial Differential Equations}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Different common PDE's}{10}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Solving PDE's}{11}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Method of characteristic}{11}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Seperation of variables}{12}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2}Seperation of variables}{13}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Notes}{13}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Green's Functions}{13}{section.4}%
-\contentsline {section}{\numberline {5}Complex Analysis}{15}{section.5}%
+\contentsline {section}{\numberline {5}Complex Analysis}{16}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Residue}{16}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Contour Integral tricks}{17}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Moreras Theorem}{18}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}Branch cut}{18}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Cauchys principal value}{19}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.5}Cauchys principal value}{20}{subsection.5.5}%
 \contentsline {subsection}{\numberline {5.6}Meromorphic functions \& Winding numbers}{20}{subsection.5.6}%
 \contentsline {section}{\numberline {6}Bessel functions}{21}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Legendre's polynomials}{22}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Generating functions}{22}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Other special functions}{22}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Transforms}{23}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Fourier Transform}{23}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Laplace Transform}{24}{subsection.7.2}%
+\contentsline {subsection}{\numberline {6.2}Generating functions}{23}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Other special functions}{23}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Transforms}{24}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Fourier Transform}{24}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Laplace Transform}{25}{subsection.7.2}%
 \contentsline {section}{\numberline {8}Usefull identifies}{25}{section.8}%
 \contentsline {section}{\numberline {9}Practice Exam}{27}{section.9}%
 \contentsline {section}{\numberline {10}Previous exam 2021}{35}{section.10}%

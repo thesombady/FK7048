@@ -50,7 +50,7 @@ Explain/Sketch-out (in a few equations and sentences) the following methods for 
 Show that:
 \begin{align*}
     (1-x^2)y'' -xy' +n^2y = 0,
-\end{align*}can be but put on SL-from with the following substitution: $\sqrt{(1-x^2)}$. Also, explain the orthangonaility condition of the SL problem under the transformation.
+\end{align*}can be but put on SL-from with the following substitution: $\sqrt{(1-x^2)}^{-1}$. Also, explain the orthangonaility condition of the SL problem under the transformation.
 
 \subsubsection*{Solution}
 There exists more than one way of doing this, one would be to compute the weighting-function; if the weighting is the same as the suggested transformation then the transformation is valid; another way would be to plug it into the equation by multiplying both sides by the transform:
@@ -216,8 +216,8 @@ Rewrite the function initial-condition: $\psi(x,0) = A\delta(x)$. Assume that $\
     a \left(-k^2\cdot \tilde{\psi}(k, t)\right) = \frac{\partial}{\partial t}\tilde{\psi}(k, t).
 \end{align*}This is now an ODE of the first kind which can be solved as follows:
 \begin{align*}
-    \psi(k, t) &= \psi(k, 0)e^{-a k^2 t}.
+    \tilde{\psi}(k, t) &= \tilde{\psi}(k, 0)e^{-a k^2 t}.
 \end{align*}Either transform back, or transform the initial-condition.
 \begin{align*}
-    \int_{-\infty}^{\infty}A\delta(x)e^{-ikx}dx = A
-\end{align*}Thus the solution, in $k$-space is given by: $\psi(k, t) = Ae^{-ak^2t}.$ Transforming back will yield an indefinite interal known as the error-function.
+    \tilde{\psi}(k,0)=\int_{-\infty}^{\infty}A\delta(x)e^{-ikx}dx = A
+\end{align*}Thus the solution, in $k$-space is given by: $\tilde{\psi}(k, t) = Ae^{-ak^2t}.$ Transforming back will yield an indefinite interal known as the error-function.
